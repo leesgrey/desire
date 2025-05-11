@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dok7h721x376y"]
+
+[ext_resource type="Script" uid="uid://dads4o36lw05r" path="res://Scripts/audio_manager.gd" id="1_hhwve"]
+[ext_resource type="AudioStream" uid="uid://dstc13lfpoemd" path="res://Assets/Audio/Ambiance.wav" id="1_sm2tf"]
+[ext_resource type="AudioStream" uid="uid://clhuix30peloq" path="res://Assets/Audio/Crickets.wav" id="2_4tj6f"]
+[ext_resource type="AudioStream" uid="uid://cobug3gmejtq3" path="res://Assets/Audio/footsteps.mp3" id="4_qixve"]
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("footstep_player")]
+script = ExtResource("1_hhwve")
+footstep_player = NodePath("FootstepPlayer")
+
+[node name="BaseAmbiance" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_sm2tf")
+autoplay = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4tj6f")
+volume_db = -80.0
+autoplay = true
+
+[node name="FootstepPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qixve")
+volume_db = -9.898

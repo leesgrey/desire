@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PathResource" load_steps=4 format=3 uid="uid://c0ie0njjnjenl"]
+
+[ext_resource type="PackedScene" uid="uid://b664n57agk5cw" path="res://Scenes/testA.tscn" id="1_3nuny"]
+[ext_resource type="Script" uid="uid://c8ffdd3bh7mj6" path="res://Resources/PathResource.gd" id="1_ie83l"]
+[ext_resource type="PackedScene" uid="uid://ciqyo2kyj0dd0" path="res://Scenes/testB.tscn" id="2_3gsnr"]
+
+[resource]
+script = ExtResource("1_ie83l")
+left = ExtResource("1_3nuny")
+right = ExtResource("2_3gsnr")
+metadata/_custom_type_script = "uid://c8ffdd3bh7mj6"

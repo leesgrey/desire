@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dstc13lfpoemd"
-path="res://.godot/imported/Ambiance.wav-f26394a2c404c3d0b46d1d6682358110.sample"
+path="res://.godot/imported/night_mbiance.wav-183717fe2baef59640469c55f8c8dbd9.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/Ambiance.wav"
-dest_files=["res://.godot/imported/Ambiance.wav-f26394a2c404c3d0b46d1d6682358110.sample"]
+source_file="res://Assets/Audio/night_mbiance.wav"
+dest_files=["res://.godot/imported/night_mbiance.wav-183717fe2baef59640469c55f8c8dbd9.sample"]
 
 [params]
 
@@ -19,6 +19,6 @@ force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
 edit/loop_mode=2
-edit/loop_begin=0
+edit/loop_begin=1
 edit/loop_end=-1
 compress/mode=2

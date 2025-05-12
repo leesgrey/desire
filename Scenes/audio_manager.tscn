@@ -1,23 +1,62 @@
-[gd_scene load_steps=5 format=3 uid="uid://dok7h721x376y"]
+[gd_scene load_steps=9 format=3 uid="uid://dok7h721x376y"]
 
 [ext_resource type="Script" uid="uid://dads4o36lw05r" path="res://Scripts/audio_manager.gd" id="1_hhwve"]
-[ext_resource type="AudioStream" uid="uid://dstc13lfpoemd" path="res://Assets/Audio/Ambiance.wav" id="1_sm2tf"]
-[ext_resource type="AudioStream" uid="uid://clhuix30peloq" path="res://Assets/Audio/Crickets.wav" id="2_4tj6f"]
+[ext_resource type="AudioStream" uid="uid://dstc13lfpoemd" path="res://Assets/Audio/night_mbiance.wav" id="1_sm2tf"]
+[ext_resource type="AudioStream" uid="uid://bevrs0ex65nad" path="res://Assets/Audio/crow.wav" id="2_lwpe1"]
+[ext_resource type="AudioStream" uid="uid://dl0q2gadt7fol" path="res://Assets/Audio/bird_call.mp3" id="3_lwpe1"]
+[ext_resource type="AudioStream" uid="uid://54u58vlqnkx8" path="res://Assets/Audio/loon.wav" id="4_lwpe1"]
 [ext_resource type="AudioStream" uid="uid://cobug3gmejtq3" path="res://Assets/Audio/footsteps.mp3" id="4_qixve"]
+[ext_resource type="Theme" uid="uid://b07i4ys3vvhjb" path="res://main_theme.tres" id="5_0hehx"]
+[ext_resource type="AudioStream" uid="uid://w2nqvtnuoadn" path="res://Assets/Audio/mourning_dove.wav" id="5_lwpe1"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("footstep_player")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("footstep_player", "audio_caption_layer", "audio_caption_text", "ui_sound_player")]
 script = ExtResource("1_hhwve")
 footstep_player = NodePath("FootstepPlayer")
+audio_caption_layer = NodePath("CanvasLayer")
+audio_caption_text = NodePath("CanvasLayer/Control/TextureRect/RichTextLabel")
+ui_sound_player = NodePath("UISoundPlayer")
+start_game_sound = ExtResource("2_lwpe1")
+birds = Array[AudioStream]([ExtResource("3_lwpe1"), ExtResource("4_lwpe1"), ExtResource("5_lwpe1")])
 
 [node name="BaseAmbiance" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_sm2tf")
-autoplay = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_4tj6f")
-volume_db = -80.0
+volume_db = 5.0
 autoplay = true
 
 [node name="FootstepPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_qixve")
-volume_db = -9.898
+volume_db = -1.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("5_0hehx")
+
+[node name="TextureRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -25.0
+offset_right = 439.0
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.176238, 0.0541713, 0.117009, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/TextureRect"]
+layout_mode = 0
+offset_right = 439.0
+offset_bottom = 40.0
+theme_type_variation = &"SubtitleText"
+text = "audio caption"
+
+[node name="UISoundPlayer" type="AudioStreamPlayer" parent="."]

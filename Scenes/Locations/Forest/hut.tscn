@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://c70umeev7pl2m"]
+
+[ext_resource type="PackedScene" uid="uid://ta8phd772d75" path="res://Scenes/path_entrance.tscn" id="1_52qvl"]
+[ext_resource type="PackedScene" uid="uid://b0dpbbppdnck1" path="res://Scenes/dialogue_box.tscn" id="2_s0b3e"]
+
+[node name="Hut" type="Node2D"]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.27, 0.2403, 0.24525, 1)
+
+[node name="TownGateEntrance" parent="." instance=ExtResource("1_52qvl")]
+position = Vector2(219, 336)
+destination = "town gate"
+
+[node name="MeadowEntrance" parent="." instance=ExtResource("1_52qvl")]
+position = Vector2(547, 330)
+destination = "meadow"
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_s0b3e")]

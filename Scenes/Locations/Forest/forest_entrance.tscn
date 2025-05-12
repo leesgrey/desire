@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b664n57agk5cw"]
+
+[ext_resource type="Script" uid="uid://dosl6k3oxikbb" path="res://Scripts/location_scene.gd" id="1_1wh4w"]
+[ext_resource type="Resource" uid="uid://sq0cg4lehxbc" path="res://Resources/Locations/forest_entrance.tres" id="2_v6unr"]
+[ext_resource type="Resource" uid="uid://cyljjgogholm7" path="res://Resources/DialogueEvents/forest_entrance.tres" id="3_x060k"]
+[ext_resource type="PackedScene" uid="uid://ta8phd772d75" path="res://Scenes/path_entrance.tscn" id="4_qj8ff"]
+[ext_resource type="PackedScene" uid="uid://b0dpbbppdnck1" path="res://Scenes/dialogue_box.tscn" id="5_r3hj8"]
+
+[node name="ForestEntrance" type="Node2D" node_paths=PackedStringArray("dialogue_box")]
+script = ExtResource("1_1wh4w")
+locationResource = ExtResource("2_v6unr")
+starting_dialogue = ExtResource("3_x060k")
+dialogue_box = NodePath("DialogueBox")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.392157, 0.498039, 0.286275, 1)
+
+[node name="ClearingEntrance" parent="." instance=ExtResource("4_qj8ff")]
+position = Vector2(507, 356)
+destination = "clearing"
+
+[node name="DialogueBox" parent="." instance=ExtResource("5_r3hj8")]

@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dukqk0ky5ujg5"]
+
+[ext_resource type="Theme" uid="uid://b07i4ys3vvhjb" path="res://main_theme.tres" id="1_fsb5k"]
+
+[sub_resource type="GDScript" id="GDScript_fsb5k"]
+script/source = "extends Node2D
+
+func _enter_tree() -> void:
+	print(\"entered tree\")
+"
+
+[node name="Ending" type="Node2D"]
+script = SubResource("GDScript_fsb5k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fsb5k")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -98.0
+offset_top = -56.0
+offset_right = -25.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "ending"
+fit_content = true
+autowrap_mode = 0

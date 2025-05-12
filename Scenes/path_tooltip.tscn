@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://k4yh2rkcjrp3"]
+
+[ext_resource type="Theme" uid="uid://b07i4ys3vvhjb" path="res://main_theme.tres" id="1_ay7nl"]
+
+[node name="PathTooltip" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+theme = ExtResource("1_ay7nl")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 109.0
+offset_bottom = 29.0
+mouse_filter = 2
+theme_type_variation = &"PathTooltip"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+text = "aswagdas"
+fit_content = true
+autowrap_mode = 0

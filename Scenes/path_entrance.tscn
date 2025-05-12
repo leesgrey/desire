@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ta8phd772d75"]
+
+[ext_resource type="Script" uid="uid://bq7wyhd72e3x5" path="res://Scripts/path_entrance.gd" id="1_37f3v"]
+[ext_resource type="Texture2D" uid="uid://c6eu80ajk4g24" path="res://icon.svg" id="2_rwgrh"]
+
+[node name="PathEntrance" type="Area2D"]
+script = ExtResource("1_37f3v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rwgrh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(55.4, -64, -55.5, -64, -57.5, -63, -60.2, -63, -64, -55.4, -64, 56.2, -62, 58.7, -62, 61.2, -57.1, 64, 56.2, 64, 58.7, 62, 61.3, 62, 64, 55.7, 64, -56.2, 62, -58.7, 62, -61.3)

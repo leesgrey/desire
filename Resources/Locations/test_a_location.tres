@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Location" load_steps=2 format=3 uid="uid://sq0cg4lehxbc"]
-
-[ext_resource type="Script" uid="uid://bl0rckh63apg" path="res://Resources/LocationResource.gd" id="1_x7pcl"]
-
-[resource]
-resource_name = "test A"
-script = ExtResource("1_x7pcl")
-metadata/_custom_type_script = "uid://bl0rckh63apg"

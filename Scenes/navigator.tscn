@@ -1,6 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://brso7a88vnrtk"]
+[gd_scene load_steps=20 format=3 uid="uid://brso7a88vnrtk"]
 
 [ext_resource type="Script" uid="uid://dk0xpe10l2otu" path="res://Scripts/navigator.gd" id="1_5me08"]
+[ext_resource type="PackedScene" uid="uid://b664n57agk5cw" path="res://Scenes/Locations/Forest/forest_entrance.tscn" id="2_r4kmv"]
+[ext_resource type="PackedScene" uid="uid://ciqyo2kyj0dd0" path="res://Scenes/Locations/Forest/river.tscn" id="3_y2tub"]
+[ext_resource type="PackedScene" uid="uid://bwnn28w316u2v" path="res://Scenes/intro_text_scene.tscn" id="4_he7tu"]
+[ext_resource type="PackedScene" uid="uid://ceu51lgls273p" path="res://Scenes/Locations/Forest/forest_clearing.tscn" id="5_ve17l"]
+[ext_resource type="PackedScene" uid="uid://bj61ss3cn1w6a" path="res://Scenes/Locations/Forest/meadow.tscn" id="6_bfs0i"]
+[ext_resource type="PackedScene" uid="uid://c70umeev7pl2m" path="res://Scenes/Locations/Forest/hut.tscn" id="7_xbo1j"]
+[ext_resource type="PackedScene" uid="uid://cqu5ipa1nnfwy" path="res://Scenes/Locations/Forest/town_gate.tscn" id="8_qi0rf"]
+[ext_resource type="PackedScene" uid="uid://l1y0k0ru81kt" path="res://Scenes/Locations/Town/town_square.tscn" id="9_ye67v"]
+[ext_resource type="PackedScene" uid="uid://bfm5w8hpyx56v" path="res://Scenes/Locations/Town/house.tscn" id="10_yus28"]
+[ext_resource type="PackedScene" uid="uid://cq0fl3bvjdu8i" path="res://Scenes/Locations/Town/fountain.tscn" id="11_fn1bk"]
+[ext_resource type="PackedScene" uid="uid://cger8mwnm0uk8" path="res://Scenes/Locations/Town/school.tscn" id="12_ejcww"]
+[ext_resource type="PackedScene" uid="uid://o4r6yycft467" path="res://Scenes/Locations/Town/temple.tscn" id="13_1ckxk"]
+
+[sub_resource type="Animation" id="Animation_r4kmv"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_5me08"]
 resource_name = "fade_in"
@@ -16,8 +42,9 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1)
 }
 
-[sub_resource type="Animation" id="Animation_r4kmv"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_bfs0i"]
+resource_name = "fade_in_ending"
+length = 2.0
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -25,9 +52,24 @@ tracks/0/path = NodePath("ColorRect:color:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="Animation" id="Animation_ve17l"]
+resource_name = "fade_in_slow"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
 }
 
 [sub_resource type="Animation" id="Animation_y2tub"]
@@ -48,12 +90,28 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_r4kmv"),
 &"fade_in": SubResource("Animation_5me08"),
+&"fade_in_ending": SubResource("Animation_bfs0i"),
+&"fade_in_slow": SubResource("Animation_ve17l"),
 &"fade_out": SubResource("Animation_y2tub")
 }
 
 [node name="Navigator" type="Node" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("1_5me08")
 animation_player = NodePath("TransitionScreen/AnimationPlayer")
+location_dict = Dictionary[String, PackedScene]({
+"clearing": ExtResource("5_ve17l"),
+"forest entrance": ExtResource("2_r4kmv"),
+"fountain": ExtResource("11_fn1bk"),
+"house": ExtResource("10_yus28"),
+"hut": ExtResource("7_xbo1j"),
+"intro_text": ExtResource("4_he7tu"),
+"meadow": ExtResource("6_bfs0i"),
+"river": ExtResource("3_y2tub"),
+"school": ExtResource("12_ejcww"),
+"temple": ExtResource("13_1ckxk"),
+"town gate": ExtResource("8_qi0rf"),
+"town square": ExtResource("9_ye67v")
+})
 
 [node name="TransitionScreen" type="CanvasLayer" parent="."]
 layer = 2

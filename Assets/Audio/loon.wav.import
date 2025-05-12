@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://clhuix30peloq"
-path="res://.godot/imported/crickets.wav-38da381043ac607d114a72715cff0d28.sample"
+uid="uid://54u58vlqnkx8"
+path="res://.godot/imported/loon.wav-7e519eccf1726e35f2ff96434ed6ef33.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/crickets.wav"
-dest_files=["res://.godot/imported/crickets.wav-38da381043ac607d114a72715cff0d28.sample"]
+source_file="res://Assets/Audio/loon.wav"
+dest_files=["res://.godot/imported/loon.wav-7e519eccf1726e35f2ff96434ed6ef33.sample"]
 
 [params]
 

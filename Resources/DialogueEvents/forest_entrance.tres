@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="DialogueEvent" load_steps=7 format=3 uid="uid://cyljjgogholm7"]
+
+[ext_resource type="Script" uid="uid://ds8idpuuit6wn" path="res://Scripts/DialogueSystem/dialogue_line.gd" id="1_q2omu"]
+[ext_resource type="Script" uid="uid://bxuepomjovu8v" path="res://Scripts/DialogueSystem/dialogue_event.gd" id="2_gwg0e"]
+[ext_resource type="Script" uid="uid://bf7ltv6p23i8l" path="res://Scripts/DialogueSystem/dialogue_text.gd" id="2_rwxg4"]
+
+[sub_resource type="Resource" id="Resource_wnrif"]
+script = ExtResource("2_rwxg4")
+text = "description of the forest ahead of you"
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_gwg0e"]
+script = ExtResource("2_rwxg4")
+text = "something about moonlight, crickets"
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_rwxg4"]
+script = ExtResource("2_rwxg4")
+text = "something moody about how you feel"
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[resource]
+script = ExtResource("2_gwg0e")
+event_id = "forest_entrance_intro"
+lines = Array[ExtResource("1_q2omu")]([SubResource("Resource_wnrif"), SubResource("Resource_gwg0e"), SubResource("Resource_rwxg4")])
+metadata/_custom_type_script = "uid://bxuepomjovu8v"

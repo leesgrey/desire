@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0dpbbppdnck1"]
+
+[ext_resource type="Theme" uid="uid://b07i4ys3vvhjb" path="res://main_theme.tres" id="1_hygrc"]
+[ext_resource type="Script" uid="uid://brohlb8dgjco6" path="res://Scripts/DialogueSystem/dialogue_box.gd" id="1_l8qb8"]
+
+[sub_resource type="Gradient" id="Gradient_l8qb8"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kyvu4"]
+gradient = SubResource("Gradient_l8qb8")
+
+[node name="DialogueBox" type="CanvasLayer" node_paths=PackedStringArray("panel", "text_container", "indicator", "scroll_container")]
+script = ExtResource("1_l8qb8")
+panel = NodePath("PanelContainer")
+text_container = NodePath("PanelContainer/PanelBG/ScrollContainer/TextBox")
+indicator = NodePath("PanelContainer/PanelBG/Indicator")
+scroll_container = NodePath("PanelContainer/PanelBG/ScrollContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+clip_contents = true
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -408.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_hygrc")
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PanelBG" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/PanelBG"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextBox" type="VBoxContainer" parent="PanelContainer/PanelBG/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Indicator" type="RichTextLabel" parent="PanelContainer/PanelBG"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+bbcode_enabled = true
+text = ">"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Control" type="Control" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Control"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 351.5
+offset_top = 1.0
+offset_right = 607.5
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 1.5708
+texture = SubResource("GradientTexture1D_kyvu4")

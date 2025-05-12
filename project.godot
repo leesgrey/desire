@@ -19,6 +19,18 @@ config/icon="res://icon.svg"
 
 Navigator="*res://Scenes/navigator.tscn"
 AudioManager="*res://Scenes/audio_manager.tscn"
+SettingsManager="*res://Scripts/settings_manager.gd"
+ShaderLayer="res://Scenes/shader_layer.tscn"
+TooltipHandler="*res://Scenes/tooltip_handler.tscn"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
+[gui]
+
+theme/custom="uid://b07i4ys3vvhjb"
 
 [input]
 

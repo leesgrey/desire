@@ -15,6 +15,7 @@ gradient = SubResource("Gradient_ub1n5")
 script = ExtResource("1_1wh4w")
 starting_dialogue = ExtResource("3_x060k")
 dialogue_box = NodePath("DialogueBox")
+debug_force_start = true
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -2

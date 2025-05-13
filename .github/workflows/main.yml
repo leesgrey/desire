@@ -12,10 +12,7 @@ name: itch-deploy
 
 # Define what triggers the action
 # In this case: on push, if one of the files named in paths changes
-on:
-  push:
-    paths:
-      - "version"
+on: push
 
 env:
   WORKING_DIRECTORY: .

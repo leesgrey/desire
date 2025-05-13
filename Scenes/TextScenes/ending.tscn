@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dukqk0ky5ujg5"]
 
-[ext_resource type="Theme" uid="uid://b07i4ys3vvhjb" path="res://main_theme.tres" id="1_fsb5k"]
+[ext_resource type="Theme" uid="uid://dd1c33ktwh6ap" path="res://main_theme.tres" id="1_fsb5k"]
 [ext_resource type="Script" uid="uid://bkk2c4f36qwmy" path="res://Scripts/ending.gd" id="1_jr6xh"]
 [ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="3_c683f"]
 [ext_resource type="Texture2D" uid="uid://bwdbgiloep6q1" path="res://Assets/danylo-suprun-1zJwAKjw-tY-unsplash.jpg" id="4_c683f"]

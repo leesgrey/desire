@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dy62vukddyeyw"]
 
 [ext_resource type="Script" uid="uid://drtrxnberf42w" path="res://Scripts/text_scene.gd" id="1_ntn2l"]
-[ext_resource type="Theme" uid="uid://b07i4ys3vvhjb" path="res://main_theme.tres" id="2_spuiu"]
+[ext_resource type="Theme" uid="uid://dd1c33ktwh6ap" path="res://main_theme.tres" id="2_spuiu"]
 
 [sub_resource type="Gradient" id="Gradient_bmhos"]
 offsets = PackedFloat32Array(0, 0.306748, 1)

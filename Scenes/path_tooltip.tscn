@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://k4yh2rkcjrp3"]
 
-[ext_resource type="Theme" uid="uid://b07i4ys3vvhjb" path="res://main_theme.tres" id="1_ay7nl"]
+[ext_resource type="Theme" uid="uid://dd1c33ktwh6ap" path="res://main_theme.tres" id="1_ay7nl"]
 
 [node name="PathTooltip" type="Control"]
 layout_mode = 3

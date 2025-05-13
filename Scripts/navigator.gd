@@ -8,7 +8,6 @@ signal scene_transition_end
 @export var ending_scene: PackedScene
 @export var main_menu: PackedScene
 
-var seen_locations: Array[LocationResource]
 var current_scene: String
 var next_scene: String
 var seen_paths: Array[Path]

@@ -1,9 +1,16 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://b07i4ys3vvhjb"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://dd1c33ktwh6ap"]
 
 [ext_resource type="FontFile" uid="uid://b2rdx04vgumio" path="res://Assets/Fonts/AlteHaasGroteskRegular.ttf" id="1_470mv"]
 [ext_resource type="FontFile" uid="uid://dbhuwj7tmc6sj" path="res://Assets/Fonts/Chomsky.otf" id="1_a2l2q"]
-[ext_resource type="Texture2D" uid="uid://gpdwhm6sdvsm" path="res://hovered_button_texture.tres" id="2_58jnp"]
+[ext_resource type="Texture2D" uid="uid://dp8n56dea4nb1" path="res://hovered_button_texture.tres" id="2_58jnp"]
 [ext_resource type="FontFile" uid="uid://dr3kmkeon4v6r" path="res://Assets/Fonts/AlteHaasGroteskBold.ttf" id="4_58jnp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_466ly"]
+content_margin_left = 16.0
+content_margin_top = 4.0
+content_margin_right = 16.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1679, 0.197915, 0.23, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_52mx2"]
 
@@ -15,9 +22,20 @@ texture = ExtResource("2_58jnp")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0omi4"]
 texture = ExtResource("2_58jnp")
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_466ly"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+color = Color(1, 1, 1, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_58jnp"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_58jnp"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
 color = Color(1, 1, 1, 1)
 vertical = true
 
@@ -43,6 +61,8 @@ texture_margin_bottom = 20.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_466ly"]
 
 [resource]
+AudioCaption/base_type = &"PanelContainer"
+AudioCaption/styles/panel = SubResource("StyleBoxFlat_466ly")
 Button/colors/font_color = Color(0.784314, 0.784314, 0.843137, 1)
 Button/colors/font_pressed_color = Color(0.57401, 0.5734, 0.61, 1)
 Button/colors/icon_hover_color = Color(0.176471, 0, 1, 1)
@@ -54,6 +74,8 @@ Button/styles/focus = SubResource("StyleBoxEmpty_52mx2")
 Button/styles/hover = SubResource("StyleBoxTexture_466ly")
 Button/styles/normal = SubResource("StyleBoxTexture_58jnp")
 Button/styles/pressed = SubResource("StyleBoxTexture_0omi4")
+DialogueEvent/base_type = &"PanelContainer"
+DialogueEvent/styles/panel = SubResource("StyleBoxLine_466ly")
 HBoxContainer/constants/separation = 36
 HSeparator/constants/separation = 8
 HSeparator/styles/separator = SubResource("StyleBoxEmpty_58jnp")

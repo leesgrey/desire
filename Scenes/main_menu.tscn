@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://bi5e55wqxqfhb" path="res://film_grain_shader.tres" id="1_1ehe0"]
 [ext_resource type="Script" uid="uid://cdq0kacnh8u8u" path="res://Scripts/main_menu.gd" id="1_48xlc"]
-[ext_resource type="Theme" uid="uid://b07i4ys3vvhjb" path="res://main_theme.tres" id="2_48xlc"]
+[ext_resource type="Theme" uid="uid://dd1c33ktwh6ap" path="res://main_theme.tres" id="2_48xlc"]
 [ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="3_n45e2"]
 [ext_resource type="Texture2D" uid="uid://byp5vhcjdi7yx" path="res://Assets/29632548284_f88cafb43a_o.jpg" id="4_opfnp"]
 
@@ -295,9 +295,9 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="ContentLayer/SettingsMenu"]
 layout_mode = 0
-offset_left = -536.0
-offset_top = 254.0
-offset_right = -484.0
-offset_bottom = 294.0
+offset_left = -303.0
+offset_top = -2.0
+offset_right = -251.0
+offset_bottom = 38.0
 text = "back
 "

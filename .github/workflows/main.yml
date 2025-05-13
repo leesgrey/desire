@@ -102,3 +102,4 @@ jobs:
           user: ${{ secrets.USERNAME }}
           game: ${{ secrets.GAMENAME }}
           channel: html5
+          userversion-file: buildnumber.txt

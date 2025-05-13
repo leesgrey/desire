@@ -30,7 +30,7 @@ jobs:
     # or you want to check for changes elsewhere,
     # please change this here:
     # -----------------------------v
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/web-build'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:

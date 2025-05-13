@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://ciqyo2kyj0dd0"]
+[gd_scene load_steps=6 format=3 uid="uid://ciqyo2kyj0dd0"]
 
+[ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="1_0hyos"]
 [ext_resource type="PackedScene" uid="uid://ta8phd772d75" path="res://Scenes/path_entrance.tscn" id="1_v2i40"]
 [ext_resource type="PackedScene" uid="uid://b0dpbbppdnck1" path="res://Scenes/dialogue_box.tscn" id="2_200se"]
+[ext_resource type="Texture2D" uid="uid://cpsjx2ehv7jdx" path="res://Assets/30177927561_ff7792fe04_o.jpg" id="2_w5fir"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qrt8q"]
+shader = ExtResource("1_0hyos")
+shader_parameter/amount = 400
+shader_parameter/threshold = 0.2
+shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/invert = false
 
 [node name="Meadow" type="Node2D"]
 
@@ -18,6 +27,20 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.3591, 0.517275, 0.57, 1)
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer"]
+material = SubResource("ShaderMaterial_qrt8q")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -355.0
+offset_right = -375.0
+offset_bottom = 801.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_w5fir")
+stretch_mode = 5
 
 [node name="ClearingEntrance" parent="." instance=ExtResource("1_v2i40")]
 position = Vector2(433, 291)

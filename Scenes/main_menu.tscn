@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://bi5e55wqxqfhb" path="res://film_grain_shader.tres" id="1_1ehe0"]
 [ext_resource type="Script" uid="uid://cdq0kacnh8u8u" path="res://Scripts/main_menu.gd" id="1_48xlc"]
 [ext_resource type="Theme" uid="uid://b07i4ys3vvhjb" path="res://main_theme.tres" id="2_48xlc"]
-[ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scenes/pixellate.gdshader" id="3_n45e2"]
+[ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="3_n45e2"]
 [ext_resource type="Texture2D" uid="uid://byp5vhcjdi7yx" path="res://Assets/29632548284_f88cafb43a_o.jpg" id="4_opfnp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cp0ys"]
@@ -11,6 +11,7 @@ shader = ExtResource("3_n45e2")
 shader_parameter/amount = 400
 shader_parameter/threshold = 0.2
 shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/invert = false
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1ehe0"]
 lifetime_randomness = 0.1
@@ -46,6 +47,7 @@ main_menu = NodePath("ContentLayer/MainMenu")
 settings_back_button = NodePath("ContentLayer/SettingsMenu/Button")
 audio_caption_checkbox = NodePath("ContentLayer/SettingsMenu/VBoxContainer/GridContainer/CheckBox")
 buttons_container = NodePath("ContentLayer/MainMenu/CenterContent/VBoxContainer/PanelContainer/VBoxContainer")
+bird_sound_names = Array[String](["crow", "loon", "mourning_dove"])
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1

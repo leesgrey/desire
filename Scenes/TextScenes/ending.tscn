@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://dukqk0ky5ujg5"]
+
+[ext_resource type="Theme" uid="uid://b07i4ys3vvhjb" path="res://main_theme.tres" id="1_fsb5k"]
+[ext_resource type="Script" uid="uid://bkk2c4f36qwmy" path="res://Scripts/ending.gd" id="1_jr6xh"]
+[ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="3_c683f"]
+[ext_resource type="Texture2D" uid="uid://bwdbgiloep6q1" path="res://Assets/danylo-suprun-1zJwAKjw-tY-unsplash.jpg" id="4_c683f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdwhy"]
+shader = ExtResource("3_c683f")
+shader_parameter/amount = 400
+shader_parameter/threshold = 0.2
+shader_parameter/color = Vector3(22, 22, 30)
+shader_parameter/invert = false
+
+[node name="Ending" type="Node2D" node_paths=PackedStringArray("corner_text")]
+script = ExtResource("1_jr6xh")
+corner_text = NodePath("CanvasLayer/RichTextLabel")
+text_delay = 5.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fsb5k")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+material = SubResource("ShaderMaterial_hdwhy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = 93.0
+offset_right = 45.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_c683f")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -53.0
+offset_right = -19.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+bbcode_enabled = true
+text = "[b]>>[/b]"
+fit_content = true
+autowrap_mode = 0

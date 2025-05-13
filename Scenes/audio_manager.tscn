@@ -1,31 +1,57 @@
-[gd_scene load_steps=9 format=3 uid="uid://dok7h721x376y"]
+[gd_scene load_steps=14 format=3 uid="uid://dok7h721x376y"]
 
 [ext_resource type="Script" uid="uid://dads4o36lw05r" path="res://Scripts/audio_manager.gd" id="1_hhwve"]
-[ext_resource type="AudioStream" uid="uid://dstc13lfpoemd" path="res://Assets/Audio/night_mbiance.wav" id="1_sm2tf"]
+[ext_resource type="AudioStream" uid="uid://dstc13lfpoemd" path="res://Assets/Audio/night_ambience.wav" id="1_sm2tf"]
 [ext_resource type="AudioStream" uid="uid://bevrs0ex65nad" path="res://Assets/Audio/crow.wav" id="2_lwpe1"]
-[ext_resource type="AudioStream" uid="uid://dl0q2gadt7fol" path="res://Assets/Audio/bird_call.mp3" id="3_lwpe1"]
+[ext_resource type="Script" uid="uid://cwcapt145f7mp" path="res://Scripts/captioned_audio.gd" id="2_qixve"]
+[ext_resource type="AudioStream" uid="uid://b4pb85h5v72mr" path="res://Assets/Audio/footsteps.wav" id="3_5kf6k"]
 [ext_resource type="AudioStream" uid="uid://54u58vlqnkx8" path="res://Assets/Audio/loon.wav" id="4_lwpe1"]
-[ext_resource type="AudioStream" uid="uid://cobug3gmejtq3" path="res://Assets/Audio/footsteps.mp3" id="4_qixve"]
 [ext_resource type="Theme" uid="uid://b07i4ys3vvhjb" path="res://main_theme.tres" id="5_0hehx"]
 [ext_resource type="AudioStream" uid="uid://w2nqvtnuoadn" path="res://Assets/Audio/mourning_dove.wav" id="5_lwpe1"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("footstep_player", "audio_caption_layer", "audio_caption_text", "ui_sound_player")]
+[sub_resource type="Resource" id="Resource_0hehx"]
+script = ExtResource("2_qixve")
+audio_stream = ExtResource("1_sm2tf")
+caption = "crickets, rustling leaves"
+metadata/_custom_type_script = "uid://cwcapt145f7mp"
+
+[sub_resource type="Resource" id="Resource_mjqhu"]
+script = ExtResource("2_qixve")
+audio_stream = ExtResource("2_lwpe1")
+caption = "crow caws"
+metadata/_custom_type_script = "uid://cwcapt145f7mp"
+
+[sub_resource type="Resource" id="Resource_5kf6k"]
+script = ExtResource("2_qixve")
+audio_stream = ExtResource("4_lwpe1")
+caption = "loon call"
+metadata/_custom_type_script = "uid://cwcapt145f7mp"
+
+[sub_resource type="Resource" id="Resource_tnn7g"]
+script = ExtResource("2_qixve")
+audio_stream = ExtResource("5_lwpe1")
+caption = "mourning dove call"
+metadata/_custom_type_script = "uid://cwcapt145f7mp"
+
+[sub_resource type="Resource" id="Resource_lwpe1"]
+script = ExtResource("2_qixve")
+audio_stream = ExtResource("3_5kf6k")
+caption = "footsteps in grass"
+metadata/_custom_type_script = "uid://cwcapt145f7mp"
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("audio_caption_layer", "audio_caption_text", "ambience_players", "sfx_players")]
 script = ExtResource("1_hhwve")
-footstep_player = NodePath("FootstepPlayer")
+stream_dict = Dictionary[String, ExtResource("2_qixve")]({
+"crow": SubResource("Resource_mjqhu"),
+"footsteps_grass": SubResource("Resource_lwpe1"),
+"forest_ambience": SubResource("Resource_0hehx"),
+"loon": SubResource("Resource_5kf6k"),
+"mourning_dove": SubResource("Resource_tnn7g")
+})
 audio_caption_layer = NodePath("CanvasLayer")
 audio_caption_text = NodePath("CanvasLayer/Control/TextureRect/RichTextLabel")
-ui_sound_player = NodePath("UISoundPlayer")
-start_game_sound = ExtResource("2_lwpe1")
-birds = Array[AudioStream]([ExtResource("3_lwpe1"), ExtResource("4_lwpe1"), ExtResource("5_lwpe1")])
-
-[node name="BaseAmbiance" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_sm2tf")
-volume_db = 5.0
-autoplay = true
-
-[node name="FootstepPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_qixve")
-volume_db = -1.0
+ambience_players = NodePath("AmbiencePlayers")
+sfx_players = NodePath("SFXPlayers")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
@@ -59,4 +85,22 @@ offset_bottom = 40.0
 theme_type_variation = &"SubtitleText"
 text = "audio caption"
 
-[node name="UISoundPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AmbiencePlayers" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AmbiencePlayers"]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="AmbiencePlayers"]
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="AmbiencePlayers"]
+
+[node name="SFXPlayers" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="SFXPlayers"]
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="SFXPlayers"]

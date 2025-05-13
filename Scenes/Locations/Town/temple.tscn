@@ -19,6 +19,10 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.2258, 0.0789296, 0.0078572, 1)
 
+[node name="EnterTemple" parent="." instance=ExtResource("1_eukwf")]
+position = Vector2(589, 345)
+destination = "enter"
+
 [node name="FountainEntrance" parent="." instance=ExtResource("1_eukwf")]
 position = Vector2(175, 358)
 destination = "fountain"

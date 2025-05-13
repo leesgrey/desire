@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdb221ktpvkt"]
+
+[ext_resource type="Script" uid="uid://d3db0ve7stdox" path="res://Scripts/splash.gd" id="1_tmmas"]
+[ext_resource type="PackedScene" uid="uid://bedtd8xq78qfk" path="res://Scenes/main_menu.tscn" id="2_hvtgh"]
+[ext_resource type="Theme" uid="uid://b07i4ys3vvhjb" path="res://main_theme.tres" id="3_3amwm"]
+[ext_resource type="Shader" uid="uid://cv3t8tk3tipxt" path="res://Scripts/Shaders/splashtest.gdshader" id="4_k5yql"]
+[ext_resource type="Texture2D" uid="uid://bd6mmxwwayr6w" path="res://Assets/icon_monochrome_light.png" id="5_65tea"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xoh7v"]
+shader = ExtResource("4_k5yql")
+shader_parameter/amount = 100
+shader_parameter/threshold = 0.0
+shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/invert = false
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("blackout")]
+script = ExtResource("1_tmmas")
+main_menu = ExtResource("2_hvtgh")
+blackout = NodePath("BackgroundLayer/Control/Blackout")
+max_blackout_time = 0.5
+max_show_time = 3.0
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Control" type="Control" parent="BackgroundLayer"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_3amwm")
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BackgroundLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.5
+offset_top = -86.0
+offset_right = 328.5
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer/Control/HBoxContainer"]
+material = SubResource("ShaderMaterial_xoh7v")
+layout_mode = 2
+texture = ExtResource("5_65tea")
+expand_mode = 2
+
+[node name="Corner" type="Control" parent="BackgroundLayer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Line2D2" type="Line2D" parent="BackgroundLayer/Control/HBoxContainer/Corner"]
+position = Vector2(0, 95)
+points = PackedVector2Array(0, -40, 0, 20)
+width = 1.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundLayer/Control/HBoxContainer"]
+layout_mode = 2
+text = "made in godot"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Blackout" type="ColorRect" parent="BackgroundLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

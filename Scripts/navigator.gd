@@ -6,6 +6,7 @@ signal scene_transition_end
 @export var animation_player: AnimationPlayer
 @export var location_dict: Dictionary[String, PackedScene]
 @export var ending_scene: PackedScene
+@export var main_menu: PackedScene
 
 var seen_locations: Array[LocationResource]
 var current_scene: String
@@ -19,13 +20,15 @@ func _ready():
 	animation_player.animation_finished.connect(on_animation_finished)
 
 
-func change_scene(scene: String, is_path: bool = true, slow: bool = false):
+func change_scene(scene: String, is_path: bool = true, slow: bool = false, force_footsteps: bool = false):
 	if slow:
 		animation_player.play("fade_in_slow")
 	else:
 		animation_player.play("fade_in")
 	next_scene = scene
-	if is_path and !is_path_seen(scene):
+	if is_path or force_footsteps:
+		AudioManager.play_sound("footsteps_grass", AudioManager.SoundType.SFX, 0.5, 5.)
+	if is_path and !is_path_seen:
 		var new_path = Path.new()
 		new_path.left = current_scene
 		new_path.right = next_scene
@@ -51,6 +54,10 @@ func on_animation_finished(animation_name: String):
 	if animation_name == "fade_in_ending":
 		get_tree().change_scene_to_packed(ending_scene)
 		animation_player.play("fade_out")
+	
+	elif animation_name == "fade_in_main_menu":
+		get_tree().change_scene_to_packed(main_menu)
+		animation_player.play("fade_out")
 
 	elif animation_name == "fade_in" || animation_name == "fade_in_slow":
 		get_tree().change_scene_to_packed(location_dict[next_scene])
@@ -59,3 +66,8 @@ func on_animation_finished(animation_name: String):
 
 	elif animation_name == "fade_out":
 		scene_transition_end.emit()
+
+
+func restart_game():
+	animation_player.play("fade_in_main_menu")
+	scene_transition_start.emit()

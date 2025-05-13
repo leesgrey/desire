@@ -10,6 +10,7 @@ tooltip = NodePath("PathTooltip")
 location_text = NodePath("PathTooltip/Panel/MarginContainer/RichTextLabel")
 
 [node name="PathTooltip" parent="." instance=ExtResource("2_c2wa3")]
+visible = false
 
 [node name="Panel" parent="PathTooltip" index="0"]
 offset_left = 28.0

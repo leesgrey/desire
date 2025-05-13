@@ -29,6 +29,6 @@ destination = "house"
 
 [node name="TownGateEntrance" parent="." instance=ExtResource("1_urhqu")]
 position = Vector2(783, 338)
-destination = "gate"
+destination = "town gate"
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2_nbpmd")]

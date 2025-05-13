@@ -8,9 +8,11 @@ var seen: bool = false
 func _enter_tree() -> void:
 	seen = Navigator.is_path_seen(destination)
 
+
 func _mouse_enter():
 	if seen:
 		TooltipHandler.show_tooltip(destination)
+
 
 func _mouse_exit() -> void:
 	TooltipHandler.hide_tooltip()

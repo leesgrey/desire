@@ -6,12 +6,17 @@ extends Node
 @export var scroll_container: ScrollContainer
 @export var indicator: RichTextLabel
 
+@export var debug_force_allow_input: bool = false
+
 
 func _ready() -> void:
 	Navigator.scene_transition_end.connect(_begin_scene)
+	if !debug_force_allow_input:
+		process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _begin_scene() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	_show_next_line()
 
 
@@ -26,7 +31,7 @@ func _show_next_line() -> bool:
 	if current_num_lines > 0:
 		var last_line: RichTextLabel = text_container.get_child(current_num_lines - 1)
 		last_line.theme_type_variation = "HistoryText"
-	
+
 	var new_line = RichTextLabel.new()
 	new_line.bbcode_enabled = true
 	new_line.text = text_list[text_container.get_child_count()]
@@ -34,7 +39,7 @@ func _show_next_line() -> bool:
 	text_container.add_child(new_line)
 	if current_num_lines == len(text_list) - 1:
 		indicator.text = "[b]>>[/b]"
-		
+
 	call_deferred("scroll_to_bottom")
 	return true
 
@@ -43,7 +48,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if Input.is_action_just_pressed("click"):
 			if !_show_next_line():
-				Navigator.change_scene(next_scene, false)
+				Navigator.change_scene(next_scene, false, true, true)
 
 
 func scroll_to_bottom():

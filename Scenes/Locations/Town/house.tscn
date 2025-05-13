@@ -19,8 +19,8 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.439216, 0.219608, 0.262745, 1)
 
-[node name="FountainEntrance" parent="." instance=ExtResource("1_0avi2")]
+[node name="TownSquareEntrance" parent="." instance=ExtResource("1_0avi2")]
 position = Vector2(175, 358)
-destination = "fountain"
+destination = "town square"
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2_xlea3")]

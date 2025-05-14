@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqu5ipa1nnfwy"]
+[gd_scene load_steps=2 format=3 uid="uid://cqu5ipa1nnfwy"]
 
 [ext_resource type="PackedScene" uid="uid://ta8phd772d75" path="res://Scenes/path_entrance.tscn" id="1_srhxq"]
-[ext_resource type="PackedScene" uid="uid://b0dpbbppdnck1" path="res://Scenes/dialogue_box.tscn" id="2_25lnl"]
 
 [node name="TownGate" type="Node2D"]
 
@@ -26,5 +25,3 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.18606, 0.1722, 0.21, 1)
-
-[node name="CanvasLayer" parent="." instance=ExtResource("2_25lnl")]

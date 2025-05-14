@@ -1,4 +1,3 @@
-class_name DialogueBox
 extends CanvasLayer
 
 signal dialogue_event_start
@@ -84,3 +83,9 @@ func _show_next_line() -> bool:
 
 func scroll_to_bottom():
 	scroll_container.set_deferred("scroll_vertical", scroll_container.get_v_scroll_bar().max_value)
+
+
+func clear_dialogue_box():
+	var events = events_vbox.get_children()
+	for event in events:
+		event.queue_free()

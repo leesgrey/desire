@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://l1y0k0ru81kt"]
+[gd_scene load_steps=2 format=3 uid="uid://l1y0k0ru81kt"]
 
 [ext_resource type="PackedScene" uid="uid://ta8phd772d75" path="res://Scenes/path_entrance.tscn" id="1_urhqu"]
-[ext_resource type="PackedScene" uid="uid://b0dpbbppdnck1" path="res://Scenes/dialogue_box.tscn" id="2_nbpmd"]
 
 [node name="TownSquare" type="Node2D"]
 
@@ -30,5 +29,3 @@ destination = "house"
 [node name="TownGateEntrance" parent="." instance=ExtResource("1_urhqu")]
 position = Vector2(783, 338)
 destination = "town gate"
-
-[node name="CanvasLayer" parent="." instance=ExtResource("2_nbpmd")]

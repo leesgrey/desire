@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciqyo2kyj0dd0"]
+[gd_scene load_steps=5 format=3 uid="uid://ciqyo2kyj0dd0"]
 
 [ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="1_0hyos"]
 [ext_resource type="PackedScene" uid="uid://ta8phd772d75" path="res://Scenes/path_entrance.tscn" id="1_v2i40"]
-[ext_resource type="PackedScene" uid="uid://b0dpbbppdnck1" path="res://Scenes/dialogue_box.tscn" id="2_200se"]
 [ext_resource type="Texture2D" uid="uid://cpsjx2ehv7jdx" path="res://Assets/30177927561_ff7792fe04_o.jpg" id="2_w5fir"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qrt8q"]
@@ -49,5 +48,3 @@ destination = "clearing"
 [node name="MeadowEntrance" parent="." instance=ExtResource("1_v2i40")]
 position = Vector2(703, 316)
 destination = "meadow"
-
-[node name="CanvasLayer" parent="." instance=ExtResource("2_200se")]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b664n57agk5cw"]
+[gd_scene load_steps=8 format=3 uid="uid://b664n57agk5cw"]
 
 [ext_resource type="Script" uid="uid://dosl6k3oxikbb" path="res://Scripts/location_scene.gd" id="1_1wh4w"]
 [ext_resource type="Resource" uid="uid://cyljjgogholm7" path="res://Resources/DialogueEvents/forest_entrance.tres" id="3_x060k"]
 [ext_resource type="PackedScene" uid="uid://ta8phd772d75" path="res://Scenes/path_entrance.tscn" id="4_qj8ff"]
+[ext_resource type="Texture2D" uid="uid://c6eu80ajk4g24" path="res://icon.svg" id="5_1wh4w"]
 [ext_resource type="PackedScene" uid="uid://b0dpbbppdnck1" path="res://Scenes/dialogue_box.tscn" id="5_r3hj8"]
 
 [sub_resource type="Gradient" id="Gradient_ub1n5"]
@@ -15,7 +16,6 @@ gradient = SubResource("Gradient_ub1n5")
 script = ExtResource("1_1wh4w")
 starting_dialogue = ExtResource("3_x060k")
 dialogue_box = NodePath("DialogueBox")
-debug_force_start = true
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -2
@@ -48,3 +48,13 @@ position = Vector2(507, 356)
 destination = "clearing"
 
 [node name="DialogueBox" parent="." instance=ExtResource("5_r3hj8")]
+
+[node name="Interactable" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Interactable"]
+position = Vector2(144, 120)
+texture = ExtResource("5_1wh4w")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Interactable"]
+position = Vector2(144, 120)
+polygon = PackedVector2Array(59.1, -64, -59, -64, -63.8, -59, -64, 61, -60.3, 64, 59.6, 64, 63.9, 59, 64, -61.1)

@@ -13,6 +13,10 @@ shader_parameter/threshold = 0.2
 shader_parameter/color = Vector3(42, 42, 50)
 shader_parameter/invert = false
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ehe0"]
+content_margin_left = 36.0
+content_margin_right = 36.0
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1ehe0"]
 lifetime_randomness = 0.1
 particle_flag_disable_z = true
@@ -30,10 +34,6 @@ scale_min = 0.0
 scale_max = 3.0
 hue_variation_min = -2.23517e-08
 hue_variation_max = -2.23517e-08
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ehe0"]
-content_margin_left = 36.0
-content_margin_right = 36.0
 
 [node name="MainMenu" type="Node2D" node_paths=PackedStringArray("play_button", "quit_button", "settings_button", "settings_menu", "main_menu", "settings_back_button", "audio_caption_checkbox", "buttons_container")]
 material = ExtResource("1_1ehe0")
@@ -81,15 +81,6 @@ grow_vertical = 2
 texture = ExtResource("4_opfnp")
 stretch_mode = 6
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(624, 331)
-amount = 100
-lifetime = 10.0
-interp_to_end = 0.1
-preprocess = 0.1
-trail_lifetime = 0.22
-process_material = SubResource("ParticleProcessMaterial_1ehe0")
-
 [node name="ContentLayer" type="CanvasLayer" parent="."]
 
 [node name="MainMenu" type="Control" parent="ContentLayer"]
@@ -120,10 +111,10 @@ width = 1.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ContentLayer/MainMenu/JamCorner"]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 23.0
-offset_right = 510.0
-offset_bottom = 64.0
+offset_left = 29.0
+offset_top = 25.0
+offset_right = 511.0
+offset_bottom = 84.0
 theme_type_variation = &"SubtitleText"
 bbcode_enabled = true
 text = "made for [b]godot wild jam #81[/b]
@@ -152,10 +143,10 @@ width = 1.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ContentLayer/MainMenu/NameCorner"]
 layout_mode = 0
-offset_left = -459.0
-offset_top = -53.0
-offset_right = -27.0
-offset_bottom = -27.0
+offset_left = -462.0
+offset_top = -57.0
+offset_right = -30.0
+offset_bottom = -28.0
 theme_type_variation = &"SubtitleText"
 bbcode_enabled = true
 text = "by snakeoverhead"
@@ -195,6 +186,7 @@ theme = ExtResource("2_48xlc")
 theme_type_variation = &"HeaderLarge"
 text = "paths of desire"
 fit_content = true
+autowrap_mode = 0
 horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="ContentLayer/MainMenu/CenterContent/VBoxContainer"]
@@ -301,3 +293,21 @@ offset_right = -251.0
 offset_bottom = 38.0
 text = "back
 "
+
+[node name="Control" type="Control" parent="ContentLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ContentLayer/Control"]
+amount = 100
+lifetime = 10.0
+interp_to_end = 0.1
+preprocess = 0.1
+trail_lifetime = 0.22
+process_material = SubResource("ParticleProcessMaterial_1ehe0")

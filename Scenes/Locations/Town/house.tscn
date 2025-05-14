@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfm5w8hpyx56v"]
+[gd_scene load_steps=2 format=3 uid="uid://bfm5w8hpyx56v"]
 
 [ext_resource type="PackedScene" uid="uid://ta8phd772d75" path="res://Scenes/path_entrance.tscn" id="1_0avi2"]
-[ext_resource type="PackedScene" uid="uid://b0dpbbppdnck1" path="res://Scenes/dialogue_box.tscn" id="2_xlea3"]
 
 [node name="House" type="Node2D"]
 
@@ -22,5 +21,3 @@ color = Color(0.439216, 0.219608, 0.262745, 1)
 [node name="TownSquareEntrance" parent="." instance=ExtResource("1_0avi2")]
 position = Vector2(175, 358)
 destination = "town square"
-
-[node name="CanvasLayer" parent="." instance=ExtResource("2_xlea3")]

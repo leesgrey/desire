@@ -1,20 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://b664n57agk5cw"]
+[gd_scene load_steps=4 format=3 uid="uid://b664n57agk5cw"]
 
 [ext_resource type="Script" uid="uid://dosl6k3oxikbb" path="res://Scripts/location_scene.gd" id="1_1wh4w"]
-[ext_resource type="Resource" uid="uid://cyljjgogholm7" path="res://Resources/DialogueEvents/forest_entrance.tres" id="3_x060k"]
+[ext_resource type="Resource" uid="uid://c4r4hvlfm1j3w" path="res://Resources/DialogueEvents/question_test.tres" id="2_bg25a"]
 [ext_resource type="PackedScene" uid="uid://ta8phd772d75" path="res://Scenes/path_entrance.tscn" id="4_qj8ff"]
-[ext_resource type="PackedScene" uid="uid://b0dpbbppdnck1" path="res://Scenes/dialogue_box.tscn" id="5_r3hj8"]
 
-[sub_resource type="Gradient" id="Gradient_ub1n5"]
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1wh4w"]
-gradient = SubResource("Gradient_ub1n5")
-
-[node name="ForestEntrance" type="Node2D" node_paths=PackedStringArray("dialogue_box")]
+[node name="ForestEntrance" type="Node2D"]
 script = ExtResource("1_1wh4w")
-starting_dialogue = ExtResource("3_x060k")
-dialogue_box = NodePath("DialogueBox")
+starting_dialogue = ExtResource("2_bg25a")
+debug_force_start = true
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -2
@@ -32,18 +25,6 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.392157, 0.498039, 0.286275, 1)
 
-[node name="TextureRect" type="TextureRect" parent="BackgroundLayer"]
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -405.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_1wh4w")
-
 [node name="ClearingEntrance" parent="." instance=ExtResource("4_qj8ff")]
 position = Vector2(507, 356)
 destination = "clearing"
-
-[node name="DialogueBox" parent="." instance=ExtResource("5_r3hj8")]

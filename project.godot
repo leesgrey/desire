@@ -21,16 +21,18 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Navigator="*res://Scenes/navigator.tscn"
-AudioManager="*res://Scenes/audio_manager.tscn"
+Navigator="*res://Scenes/Managers/navigation_manager.tscn"
+AudioManager="*res://Scenes/Managers/audio_manager.tscn"
 SettingsManager="*res://Scripts/settings_manager.gd"
 ShaderLayer="res://Scenes/shader_layer.tscn"
-TooltipHandler="*res://Scenes/tooltip_handler.tscn"
+TooltipHandler="*res://Scenes/Managers/tooltip_manager.tscn"
+DialogueManager="*res://Scenes/Managers/dialogue_manager.tscn"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/resizable=false
 
 [gui]
 

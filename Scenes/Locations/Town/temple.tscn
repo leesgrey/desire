@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://o4r6yycft467"]
+[gd_scene load_steps=2 format=3 uid="uid://o4r6yycft467"]
 
 [ext_resource type="PackedScene" uid="uid://ta8phd772d75" path="res://Scenes/path_entrance.tscn" id="1_eukwf"]
-[ext_resource type="PackedScene" uid="uid://b0dpbbppdnck1" path="res://Scenes/dialogue_box.tscn" id="2_4ou5k"]
 
 [node name="Temple" type="Node2D"]
 
@@ -26,5 +25,3 @@ destination = "enter"
 [node name="FountainEntrance" parent="." instance=ExtResource("1_eukwf")]
 position = Vector2(175, 358)
 destination = "fountain"
-
-[node name="CanvasLayer" parent="." instance=ExtResource("2_4ou5k")]

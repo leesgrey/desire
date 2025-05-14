@@ -1,47 +1,47 @@
 [gd_scene load_steps=14 format=3 uid="uid://dok7h721x376y"]
 
-[ext_resource type="Script" uid="uid://dads4o36lw05r" path="res://Scripts/audio_manager.gd" id="1_hhwve"]
-[ext_resource type="AudioStream" uid="uid://dstc13lfpoemd" path="res://Assets/Audio/night_ambience.wav" id="1_sm2tf"]
-[ext_resource type="AudioStream" uid="uid://bevrs0ex65nad" path="res://Assets/Audio/crow.wav" id="2_lwpe1"]
-[ext_resource type="Script" path="res://Scripts/captioned_audio.gd" id="2_qixve"]
-[ext_resource type="AudioStream" uid="uid://b4pb85h5v72mr" path="res://Assets/Audio/footsteps.wav" id="3_5kf6k"]
-[ext_resource type="AudioStream" uid="uid://54u58vlqnkx8" path="res://Assets/Audio/loon.wav" id="4_lwpe1"]
-[ext_resource type="Theme" uid="uid://dd1c33ktwh6ap" path="res://main_theme.tres" id="5_0hehx"]
-[ext_resource type="AudioStream" uid="uid://w2nqvtnuoadn" path="res://Assets/Audio/mourning_dove.wav" id="5_lwpe1"]
+[ext_resource type="Script" uid="uid://dads4o36lw05r" path="res://Scripts/audio_manager.gd" id="1_uwgts"]
+[ext_resource type="Script" uid="uid://cwcapt145f7mp" path="res://Scripts/captioned_audio.gd" id="2_57ce3"]
+[ext_resource type="AudioStream" uid="uid://bevrs0ex65nad" path="res://Assets/Audio/crow.wav" id="3_bf05v"]
+[ext_resource type="AudioStream" uid="uid://b4pb85h5v72mr" path="res://Assets/Audio/footsteps.wav" id="4_4savl"]
+[ext_resource type="AudioStream" uid="uid://dstc13lfpoemd" path="res://Assets/Audio/night_ambience.wav" id="5_pewo8"]
+[ext_resource type="AudioStream" uid="uid://54u58vlqnkx8" path="res://Assets/Audio/loon.wav" id="6_xf8w6"]
+[ext_resource type="AudioStream" uid="uid://w2nqvtnuoadn" path="res://Assets/Audio/mourning_dove.wav" id="7_hx124"]
+[ext_resource type="Theme" uid="uid://dd1c33ktwh6ap" path="res://main_theme.tres" id="8_m2il7"]
 
 [sub_resource type="Resource" id="Resource_mjqhu"]
-script = ExtResource("2_qixve")
-audio_stream = ExtResource("2_lwpe1")
+script = ExtResource("2_57ce3")
+audio_stream = ExtResource("3_bf05v")
 caption = "crow caws"
 metadata/_custom_type_script = "uid://cwcapt145f7mp"
 
 [sub_resource type="Resource" id="Resource_lwpe1"]
-script = ExtResource("2_qixve")
-audio_stream = ExtResource("3_5kf6k")
+script = ExtResource("2_57ce3")
+audio_stream = ExtResource("4_4savl")
 caption = "footsteps in grass"
 metadata/_custom_type_script = "uid://cwcapt145f7mp"
 
 [sub_resource type="Resource" id="Resource_0hehx"]
-script = ExtResource("2_qixve")
-audio_stream = ExtResource("1_sm2tf")
+script = ExtResource("2_57ce3")
+audio_stream = ExtResource("5_pewo8")
 caption = "crickets, rustling leaves"
 metadata/_custom_type_script = "uid://cwcapt145f7mp"
 
 [sub_resource type="Resource" id="Resource_5kf6k"]
-script = ExtResource("2_qixve")
-audio_stream = ExtResource("4_lwpe1")
+script = ExtResource("2_57ce3")
+audio_stream = ExtResource("6_xf8w6")
 caption = "loon call"
 metadata/_custom_type_script = "uid://cwcapt145f7mp"
 
 [sub_resource type="Resource" id="Resource_tnn7g"]
-script = ExtResource("2_qixve")
-audio_stream = ExtResource("5_lwpe1")
+script = ExtResource("2_57ce3")
+audio_stream = ExtResource("7_hx124")
 caption = "mourning dove call"
 metadata/_custom_type_script = "uid://cwcapt145f7mp"
 
 [node name="AudioManager" type="Node" node_paths=PackedStringArray("audio_caption_layer", "ambience_players", "sfx_players", "sound_captions")]
-script = ExtResource("1_hhwve")
-stream_dict = Dictionary[String, ExtResource("2_qixve")]({
+script = ExtResource("1_uwgts")
+stream_dict = Dictionary[String, ExtResource("2_57ce3")]({
 "crow": SubResource("Resource_mjqhu"),
 "footsteps_grass": SubResource("Resource_lwpe1"),
 "forest_ambience": SubResource("Resource_0hehx"),
@@ -54,7 +54,7 @@ sfx_players = NodePath("SFXPlayers")
 sound_captions = NodePath("CanvasLayer/Control/VBoxContainer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 4
 visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
@@ -65,7 +65,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("5_0hehx")
+theme = ExtResource("8_m2il7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 1

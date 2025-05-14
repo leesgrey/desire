@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://bedtd8xq78qfk"]
 
-[ext_resource type="Material" uid="uid://bi5e55wqxqfhb" path="res://film_grain_shader.tres" id="1_1ehe0"]
-[ext_resource type="Script" uid="uid://cdq0kacnh8u8u" path="res://Scripts/main_menu.gd" id="1_48xlc"]
-[ext_resource type="Theme" uid="uid://dd1c33ktwh6ap" path="res://main_theme.tres" id="2_48xlc"]
-[ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="3_n45e2"]
-[ext_resource type="Texture2D" uid="uid://byp5vhcjdi7yx" path="res://Assets/29632548284_f88cafb43a_o.jpg" id="4_opfnp"]
+[ext_resource type="Material" uid="uid://bi5e55wqxqfhb" path="res://film_grain_shader.tres" id="1_e4hwb"]
+[ext_resource type="Script" uid="uid://cdq0kacnh8u8u" path="res://Scripts/main_menu.gd" id="2_kwyme"]
+[ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="3_pxmul"]
+[ext_resource type="Texture2D" uid="uid://byp5vhcjdi7yx" path="res://Assets/29632548284_f88cafb43a_o.jpg" id="4_x86co"]
+[ext_resource type="Theme" uid="uid://dd1c33ktwh6ap" path="res://main_theme.tres" id="5_kup7c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cp0ys"]
-shader = ExtResource("3_n45e2")
+shader = ExtResource("3_pxmul")
 shader_parameter/amount = 400
 shader_parameter/threshold = 0.2
 shader_parameter/color = Vector3(42, 42, 50)
@@ -36,8 +36,8 @@ content_margin_left = 36.0
 content_margin_right = 36.0
 
 [node name="MainMenu" type="Node2D" node_paths=PackedStringArray("play_button", "quit_button", "settings_button", "settings_menu", "main_menu", "settings_back_button", "audio_caption_checkbox", "buttons_container")]
-material = ExtResource("1_1ehe0")
-script = ExtResource("1_48xlc")
+material = ExtResource("1_e4hwb")
+script = ExtResource("2_kwyme")
 play_button = NodePath("ContentLayer/MainMenu/CenterContent/VBoxContainer/PanelContainer/VBoxContainer/PlayButton")
 quit_button = NodePath("ContentLayer/MainMenu/CenterContent/VBoxContainer/PanelContainer/VBoxContainer/QuitButton")
 next_scene = "intro_text"
@@ -78,7 +78,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_opfnp")
+texture = ExtResource("4_x86co")
 stretch_mode = 6
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -99,7 +99,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_48xlc")
+theme = ExtResource("5_kup7c")
 
 [node name="JamCorner" type="Control" parent="ContentLayer/MainMenu"]
 layout_mode = 1
@@ -191,9 +191,9 @@ grow_vertical = 2
 
 [node name="Title" type="RichTextLabel" parent="ContentLayer/MainMenu/CenterContent/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_48xlc")
+theme = ExtResource("5_kup7c")
 theme_type_variation = &"HeaderLarge"
-text = "paths of desire"
+text = "desire paths"
 fit_content = true
 horizontal_alignment = 1
 
@@ -236,7 +236,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_48xlc")
+theme = ExtResource("5_kup7c")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentLayer/SettingsMenu"]
 layout_mode = 1

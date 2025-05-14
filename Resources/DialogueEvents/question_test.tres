@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogueEvent" load_steps=7 format=3 uid="uid://c4r4hvlfm1j3w"]
+
+[ext_resource type="Script" uid="uid://ds8idpuuit6wn" path="res://Scripts/DialogueSystem/dialogue_line.gd" id="1_ksgb2"]
+[ext_resource type="Script" uid="uid://bf7ltv6p23i8l" path="res://Scripts/DialogueSystem/dialogue_text.gd" id="2_rta21"]
+[ext_resource type="Script" uid="uid://c5m7333xsejoh" path="res://Scripts/DialogueSystem/dialogue_question.gd" id="3_2iorx"]
+[ext_resource type="Script" uid="uid://bxuepomjovu8v" path="res://Scripts/DialogueSystem/dialogue_event.gd" id="4_eqttd"]
+
+[sub_resource type="Resource" id="Resource_qj8ff"]
+script = ExtResource("2_rta21")
+text = "this is normal text"
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_x060k"]
+script = ExtResource("3_2iorx")
+prompt = "whats up"
+answers = Array[String](["idk", "um uh", "guh", "rahhhhhhh"])
+line_id = ""
+metadata/_custom_type_script = "uid://c5m7333xsejoh"
+
+[resource]
+script = ExtResource("4_eqttd")
+event_id = ""
+lines = Array[ExtResource("1_ksgb2")]([SubResource("Resource_qj8ff"), SubResource("Resource_x060k")])
+metadata/_custom_type_script = "uid://bxuepomjovu8v"

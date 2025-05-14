@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://dd1c33ktwh6ap"]
+[gd_resource type="Theme" load_steps=25 format=3 uid="uid://dd1c33ktwh6ap"]
 
 [ext_resource type="FontFile" uid="uid://b2rdx04vgumio" path="res://Assets/Fonts/AlteHaasGroteskRegular.ttf" id="1_470mv"]
 [ext_resource type="FontFile" uid="uid://dbhuwj7tmc6sj" path="res://Assets/Fonts/Chomsky.otf" id="1_a2l2q"]
@@ -21,6 +21,35 @@ texture = ExtResource("2_58jnp")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0omi4"]
 texture = ExtResource("2_58jnp")
+
+[sub_resource type="Gradient" id="Gradient_58jnp"]
+offsets = PackedFloat32Array(0, 0.313846, 1)
+colors = PackedColorArray(0.180392, 0.176471, 0.227451, 1, 0.127662, 0.124887, 0.160965, 0.707692, 0.183617, 0.1794, 0.23, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_466ly"]
+gradient = SubResource("Gradient_58jnp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_py0i1"]
+texture = SubResource("GradientTexture1D_466ly")
+texture_margin_left = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sxwih"]
+content_margin_left = 16.0
+
+[sub_resource type="Gradient" id="Gradient_466ly"]
+offsets = PackedFloat32Array(0, 0.80456, 1)
+colors = PackedColorArray(0.180392, 0.176471, 0.227451, 1, 0.180392, 0.176471, 0.227451, 0.547231, 0.180392, 0.176471, 0.227451, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_52mx2"]
+gradient = SubResource("Gradient_466ly")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxwih"]
+texture = SubResource("GradientTexture2D_52mx2")
+texture_margin_left = 16.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_52mx2"]
+color = Color(1, 1, 1, 1)
+vertical = true
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_466ly"]
 content_margin_left = 8.0
@@ -74,6 +103,15 @@ Button/styles/focus = SubResource("StyleBoxEmpty_52mx2")
 Button/styles/hover = SubResource("StyleBoxTexture_466ly")
 Button/styles/normal = SubResource("StyleBoxTexture_58jnp")
 Button/styles/pressed = SubResource("StyleBoxTexture_0omi4")
+ChoiceButton/base_type = &"Button"
+ChoiceButton/colors/font_color = Color(0.590767, 0.5772, 0.74, 1)
+ChoiceButton/styles/hover = SubResource("StyleBoxTexture_py0i1")
+ChoiceButton/styles/normal = SubResource("StyleBoxEmpty_sxwih")
+ChoiceButton/styles/pressed = SubResource("StyleBoxTexture_sxwih")
+ChoiceText/base_type = &"RichTextLabel"
+ChoiceText/colors/default_color = Color(0.5767, 0.64824, 0.73, 1)
+ChoicesPanelContainer/base_type = &"PanelContainer"
+ChoicesPanelContainer/styles/panel = SubResource("StyleBoxLine_52mx2")
 DialogueEvent/base_type = &"PanelContainer"
 DialogueEvent/styles/panel = SubResource("StyleBoxLine_466ly")
 HBoxContainer/constants/separation = 36
@@ -91,8 +129,9 @@ PanelContainer/styles/panel = SubResource("StyleBoxLine_58jnp")
 PathTooltip/base_type = &"PanelContainer"
 PathTooltip/styles/panel = SubResource("StyleBoxFlat_58jnp")
 PopupPanel/styles/panel = SubResource("StyleBoxEmpty_py0i1")
+PromptText/base_type = &"RichTextLabel"
 RichTextLabel/colors/default_color = Color(0.785761, 0.78247, 0.842504, 1)
-RichTextLabel/font_sizes/bold_font_size = 20
+RichTextLabel/font_sizes/bold_font_size = 24
 RichTextLabel/font_sizes/normal_font_size = 24
 RichTextLabel/fonts/bold_font = ExtResource("4_58jnp")
 RichTextLabel/fonts/normal_font = ExtResource("1_470mv")

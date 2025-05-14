@@ -10,6 +10,7 @@ extends Node
 
 
 func _ready() -> void:
+	DialogueManager.visible = false
 	Navigator.scene_transition_end.connect(_begin_scene)
 	if !debug_force_allow_input:
 		process_mode = Node.PROCESS_MODE_DISABLED

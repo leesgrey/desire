@@ -1,0 +1,44 @@
+[gd_scene load_steps=11 format=3 uid="uid://cs4qqxysmtcc1"]
+
+[ext_resource type="Script" uid="uid://conwluc1vi764" path="res://Scripts/interactable_object.gd" id="1_lpmau"]
+[ext_resource type="Script" uid="uid://ds8idpuuit6wn" path="res://Scripts/DialogueSystem/dialogue_line.gd" id="2_4whr3"]
+[ext_resource type="Script" uid="uid://bf7ltv6p23i8l" path="res://Scripts/DialogueSystem/dialogue_text.gd" id="3_c2lke"]
+[ext_resource type="Script" uid="uid://bxuepomjovu8v" path="res://Scripts/DialogueSystem/dialogue_event.gd" id="4_btc2l"]
+[ext_resource type="Shader" uid="uid://cv3t8tk3tipxt" path="res://Scripts/Shaders/splashtest.gdshader" id="5_4whr3"]
+[ext_resource type="Texture2D" uid="uid://b21ps4l2jks6v" path="res://Assets/corpse.png" id="6_c2lke"]
+
+[sub_resource type="Resource" id="Resource_lpmau"]
+script = ExtResource("3_c2lke")
+text = "something horrible and callous"
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_4whr3"]
+script = ExtResource("4_btc2l")
+event_id = ""
+lines = Array[ExtResource("2_4whr3")]([SubResource("Resource_lpmau")])
+metadata/_custom_type_script = "uid://bxuepomjovu8v"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_btc2l"]
+shader = ExtResource("5_4whr3")
+shader_parameter/amount = 80
+shader_parameter/threshold = 0.5
+shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/invert = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4whr3"]
+size = Vector2(172, 100)
+
+[node name="BurningCorpse" type="Area2D"]
+script = ExtResource("1_lpmau")
+dialogue_event = SubResource("Resource_4whr3")
+label = "corpse, burning"
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_btc2l")
+scale = Vector2(2.05867, 2.05867)
+texture = ExtResource("6_c2lke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -3)
+shape = SubResource("RectangleShape2D_4whr3")

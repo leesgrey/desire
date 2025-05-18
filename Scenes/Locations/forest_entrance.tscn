@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://dd0ncxuqrpiy"]
+
+[ext_resource type="Script" uid="uid://dosl6k3oxikbb" path="res://Scripts/location_scene.gd" id="1_1wh4w"]
+[ext_resource type="Resource" uid="uid://cyljjgogholm7" path="res://Resources/DialogueEvents/forest_entrance.tres" id="2_bg25a"]
+[ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="3_ph8k7"]
+[ext_resource type="Texture2D" uid="uid://iuqwrb1isr7l" path="res://Assets/04-1925.566_print-edit.jpg" id="4_2ois4"]
+[ext_resource type="Script" uid="uid://xii4y8m5swu" path="res://Scripts/exit_forest_object.gd" id="4_ub1n5"]
+[ext_resource type="Resource" uid="uid://domid1kfink6p" path="res://Resources/DialogueEvents/leave_forest.tres" id="5_1wh4w"]
+[ext_resource type="Script" uid="uid://bq7wyhd72e3x5" path="res://Scripts/path_entrance.gd" id="5_2ois4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lxrj6"]
+shader = ExtResource("3_ph8k7")
+shader_parameter/amount = 400
+shader_parameter/threshold = 0.2
+shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/invert = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ph8k7"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(480, 60, 1)
+angle_min = 1.07288e-05
+angle_max = 180.0
+spread = 180.0
+initial_velocity_min = 59.24
+initial_velocity_max = 118.48
+orbit_velocity_min = -0.0999999
+orbit_velocity_max = 0.1
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 3.0
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxrj6"]
+size = Vector2(296.5, 357)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph8k7"]
+size = Vector2(661, 98)
+
+[node name="ForestEntrance" type="Node2D"]
+script = ExtResource("1_1wh4w")
+starting_dialogue = ExtResource("2_bg25a")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer"]
+material = SubResource("ShaderMaterial_lxrj6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -456.0
+offset_right = -107.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_2ois4")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BackgroundLayer"]
+position = Vector2(516, 151)
+amount = 100
+lifetime = 10.0
+interp_to_end = 0.1
+preprocess = 0.1
+trail_lifetime = 0.22
+process_material = SubResource("ParticleProcessMaterial_ph8k7")
+
+[node name="ForestClearingEntrance" type="Area2D" parent="."]
+position = Vector2(497, 280)
+script = ExtResource("5_2ois4")
+destination = "clearing"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForestClearingEntrance"]
+position = Vector2(35, -91)
+shape = SubResource("RectangleShape2D_lxrj6")
+
+[node name="ExitForest" type="Area2D" parent="."]
+position = Vector2(672, 657)
+script = ExtResource("4_ub1n5")
+leave_forest_event = ExtResource("5_1wh4w")
+label = "leave"
+always_show_label = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitForest"]
+position = Vector2(-201.5, 15)
+shape = SubResource("RectangleShape2D_ph8k7")

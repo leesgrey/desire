@@ -12,13 +12,13 @@ metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
 
 [sub_resource type="Resource" id="Resource_gwg0e"]
 script = ExtResource("2_rwxg4")
-text = "something about moonlight, crickets"
+text = "the moon cuts ribbons of light and shadow through the rustling leaves."
 line_id = ""
 metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
 
 [sub_resource type="Resource" id="Resource_rwxg4"]
 script = ExtResource("2_rwxg4")
-text = "something moody about how you feel"
+text = "its strict providence guides your hand."
 line_id = ""
 metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
 

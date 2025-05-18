@@ -1,0 +1,84 @@
+[gd_scene load_steps=18 format=3 uid="uid://ch47db8m7ry8p"]
+
+[ext_resource type="Script" uid="uid://conwluc1vi764" path="res://Scripts/interactable_object.gd" id="1_3u65u"]
+[ext_resource type="Script" uid="uid://ds8idpuuit6wn" path="res://Scripts/DialogueSystem/dialogue_line.gd" id="2_3np0x"]
+[ext_resource type="Script" uid="uid://bf7ltv6p23i8l" path="res://Scripts/DialogueSystem/dialogue_text.gd" id="3_4ys4a"]
+[ext_resource type="Script" uid="uid://bxbg6v20dv75t" path="res://Scripts/DialogueSystem/dialogue_answer.gd" id="4_kdwwr"]
+[ext_resource type="Script" uid="uid://bxuepomjovu8v" path="res://Scripts/DialogueSystem/dialogue_event.gd" id="5_gljos"]
+[ext_resource type="Script" uid="uid://c5m7333xsejoh" path="res://Scripts/DialogueSystem/dialogue_question.gd" id="6_ohtss"]
+[ext_resource type="Shader" uid="uid://fxgpk62lup7m" path="res://Scripts/Shaders/axeshader.gdshader" id="7_3np0x"]
+[ext_resource type="Texture2D" uid="uid://dklrgmpcg1xpb" path="res://Assets/iStock-178005939.jpg" id="8_3np0x"]
+
+[sub_resource type="Resource" id="Resource_8igxl"]
+script = ExtResource("3_4ys4a")
+text = "flowers!"
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_kdwwr"]
+script = ExtResource("4_kdwwr")
+text = "no"
+line_id = ""
+metadata/_custom_type_script = "uid://bxbg6v20dv75t"
+
+[sub_resource type="Resource" id="Resource_3u65u"]
+script = ExtResource("3_4ys4a")
+text = "you pick the flowers."
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_3np0x"]
+script = ExtResource("5_gljos")
+event_id = ""
+lines = Array[ExtResource("2_3np0x")]([SubResource("Resource_3u65u")])
+metadata/_custom_type_script = "uid://bxuepomjovu8v"
+
+[sub_resource type="Resource" id="Resource_4ys4a"]
+script = ExtResource("4_kdwwr")
+text = "yes"
+next_event = SubResource("Resource_3np0x")
+line_id = ""
+metadata/_custom_type_script = "uid://bxbg6v20dv75t"
+
+[sub_resource type="Resource" id="Resource_ps1ab"]
+script = ExtResource("6_ohtss")
+prompt = "pick flowers?"
+answers = Dictionary[String, ExtResource("4_kdwwr")]({
+"": SubResource("Resource_kdwwr"),
+"pick_flowers": SubResource("Resource_4ys4a")
+})
+line_id = ""
+metadata/_custom_type_script = "uid://c5m7333xsejoh"
+
+[sub_resource type="Resource" id="Resource_4whr3"]
+script = ExtResource("5_gljos")
+event_id = ""
+lines = Array[ExtResource("2_3np0x")]([SubResource("Resource_8igxl"), SubResource("Resource_ps1ab")])
+metadata/_custom_type_script = "uid://bxuepomjovu8v"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3np0x"]
+size = Vector2(1157.99, 857.093)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdwwr"]
+shader = ExtResource("7_3np0x")
+shader_parameter/amount = -60
+shader_parameter/threshold = 0.25
+shader_parameter/transparency_threshold = 2.725
+shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/invert = false
+
+[node name="Flowers" type="Area2D"]
+script = ExtResource("1_3u65u")
+dialogue_event = SubResource("Resource_4whr3")
+label = "flowers"
+id = "flowers"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 2)
+scale = Vector2(0.109673, 0.109673)
+shape = SubResource("RectangleShape2D_3np0x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_kdwwr")
+scale = Vector2(0.109673, 0.109673)
+texture = ExtResource("8_3np0x")

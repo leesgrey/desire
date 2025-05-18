@@ -1,0 +1,80 @@
+[gd_scene load_steps=18 format=3 uid="uid://ciqyo2kyj0dd0"]
+
+[ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="1_0hyos"]
+[ext_resource type="Script" uid="uid://dosl6k3oxikbb" path="res://Scripts/location_scene.gd" id="1_3f35k"]
+[ext_resource type="Script" uid="uid://ds8idpuuit6wn" path="res://Scripts/DialogueSystem/dialogue_line.gd" id="2_uq8dt"]
+[ext_resource type="Texture2D" uid="uid://cpsjx2ehv7jdx" path="res://Assets/30177927561_ff7792fe04_o.jpg" id="2_w5fir"]
+[ext_resource type="Script" uid="uid://bf7ltv6p23i8l" path="res://Scripts/DialogueSystem/dialogue_text.gd" id="3_24phx"]
+[ext_resource type="Script" uid="uid://bq7wyhd72e3x5" path="res://Scripts/path_entrance.gd" id="3_w4b7u"]
+[ext_resource type="Script" uid="uid://koss2jqy01m" path="res://Scripts/Objects/corpse.gd" id="4_3mwj0"]
+[ext_resource type="Script" uid="uid://bxuepomjovu8v" path="res://Scripts/DialogueSystem/dialogue_event.gd" id="4_6jbdy"]
+[ext_resource type="PackedScene" uid="uid://b3g0idnwy03wa" path="res://Scenes/Objects/corpse.tscn" id="5_w4b7u"]
+[ext_resource type="PackedScene" uid="uid://cs4qqxysmtcc1" path="res://Scenes/Objects/burning_corpse.tscn" id="6_pyts4"]
+[ext_resource type="PackedScene" uid="uid://b8uoody5vpy46" path="res://Scenes/Objects/corpse_player_has_flowers.tscn" id="6_w73bd"]
+[ext_resource type="Script" uid="uid://b2sy4m851gjcr" path="res://Scripts/Objects/axe.gd" id="8_mipy1"]
+[ext_resource type="PackedScene" uid="uid://cwdxntryxjx8j" path="res://Scenes/Objects/axe.tscn" id="9_3f35k"]
+
+[sub_resource type="Resource" id="Resource_rs3mi"]
+script = ExtResource("3_24phx")
+text = "describe river"
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_rx3hn"]
+script = ExtResource("4_6jbdy")
+event_id = ""
+lines = Array[ExtResource("2_uq8dt")]([SubResource("Resource_rs3mi")])
+metadata/_custom_type_script = "uid://bxuepomjovu8v"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qrt8q"]
+shader = ExtResource("1_0hyos")
+shader_parameter/amount = 600
+shader_parameter/threshold = 0.2
+shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/invert = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyts4"]
+size = Vector2(380, 72)
+
+[node name="River" type="Node2D"]
+script = ExtResource("1_3f35k")
+starting_dialogue = SubResource("Resource_rx3hn")
+debug_force_start = true
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer"]
+material = SubResource("ShaderMaterial_qrt8q")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = -184.0
+offset_right = -381.0
+offset_bottom = 359.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_w5fir")
+stretch_mode = 5
+
+[node name="ClearingEntrance" type="Area2D" parent="."]
+position = Vector2(365, 718)
+script = ExtResource("3_w4b7u")
+destination = "clearing"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClearingEntrance"]
+position = Vector2(0, -26)
+shape = SubResource("RectangleShape2D_pyts4")
+
+[node name="Corpse" type="Node2D" parent="."]
+position = Vector2(539, 453)
+script = ExtResource("4_3mwj0")
+corpse = ExtResource("5_w4b7u")
+corpse_player_has_flowers = ExtResource("6_w73bd")
+burning_corpse = ExtResource("6_pyts4")
+
+[node name="Axe" type="Node2D" parent="."]
+position = Vector2(362, 460)
+script = ExtResource("8_mipy1")
+axe = ExtResource("9_3f35k")

@@ -1,0 +1,115 @@
+[gd_scene load_steps=16 format=3 uid="uid://dok7h721x376y"]
+
+[ext_resource type="Script" uid="uid://dads4o36lw05r" path="res://Scripts/audio_manager.gd" id="1_uwgts"]
+[ext_resource type="Script" uid="uid://cwcapt145f7mp" path="res://Scripts/captioned_audio.gd" id="2_57ce3"]
+[ext_resource type="AudioStream" uid="uid://bevrs0ex65nad" path="res://Assets/Audio/crow.wav" id="3_bf05v"]
+[ext_resource type="AudioStream" uid="uid://b4pb85h5v72mr" path="res://Assets/Audio/footsteps.wav" id="4_4savl"]
+[ext_resource type="AudioStream" uid="uid://dstc13lfpoemd" path="res://Assets/Audio/night_ambience.wav" id="5_pewo8"]
+[ext_resource type="AudioStream" uid="uid://54u58vlqnkx8" path="res://Assets/Audio/loon.wav" id="6_xf8w6"]
+[ext_resource type="AudioStream" uid="uid://w2nqvtnuoadn" path="res://Assets/Audio/mourning_dove.wav" id="7_hx124"]
+[ext_resource type="AudioStream" uid="uid://bp4ksj2ean0ys" path="res://Assets/Audio/804836__benharmsound__burning-bag-of-pinecones.wav" id="8_57ce3"]
+[ext_resource type="Theme" uid="uid://dd1c33ktwh6ap" path="res://main_theme.tres" id="8_m2il7"]
+
+[sub_resource type="Resource" id="Resource_mjqhu"]
+script = ExtResource("2_57ce3")
+audio_stream = ExtResource("3_bf05v")
+caption = "crow caws"
+metadata/_custom_type_script = "uid://cwcapt145f7mp"
+
+[sub_resource type="Resource" id="Resource_lwpe1"]
+script = ExtResource("2_57ce3")
+audio_stream = ExtResource("4_4savl")
+caption = "footsteps in grass"
+metadata/_custom_type_script = "uid://cwcapt145f7mp"
+
+[sub_resource type="Resource" id="Resource_0hehx"]
+script = ExtResource("2_57ce3")
+audio_stream = ExtResource("5_pewo8")
+caption = "crickets, rustling leaves"
+metadata/_custom_type_script = "uid://cwcapt145f7mp"
+
+[sub_resource type="Resource" id="Resource_5kf6k"]
+script = ExtResource("2_57ce3")
+audio_stream = ExtResource("6_xf8w6")
+caption = "loon call"
+metadata/_custom_type_script = "uid://cwcapt145f7mp"
+
+[sub_resource type="Resource" id="Resource_tnn7g"]
+script = ExtResource("2_57ce3")
+audio_stream = ExtResource("7_hx124")
+caption = "mourning dove call"
+metadata/_custom_type_script = "uid://cwcapt145f7mp"
+
+[sub_resource type="Resource" id="Resource_bf05v"]
+script = ExtResource("2_57ce3")
+audio_stream = ExtResource("8_57ce3")
+caption = "fire crackling"
+metadata/_custom_type_script = "uid://cwcapt145f7mp"
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("audio_caption_layer", "ambience_players", "sfx_players", "sound_captions")]
+script = ExtResource("1_uwgts")
+stream_dict = Dictionary[String, ExtResource("2_57ce3")]({
+"crow": SubResource("Resource_mjqhu"),
+"fire": SubResource("Resource_bf05v"),
+"footsteps_grass": SubResource("Resource_lwpe1"),
+"forest_ambience": SubResource("Resource_0hehx"),
+"loon": SubResource("Resource_5kf6k"),
+"mourning_dove": SubResource("Resource_tnn7g")
+})
+audio_caption_layer = NodePath("CanvasLayer")
+ambience_players = NodePath("AmbiencePlayers")
+sfx_players = NodePath("SFXPlayers")
+sound_captions = NodePath("CanvasLayer/Control/VBoxContainer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+visible = false
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("8_m2il7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 388.0
+grow_vertical = 0
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="AmbiencePlayers" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AmbiencePlayers"]
+bus = &"Ambience"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="AmbiencePlayers"]
+bus = &"Ambience"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="AmbiencePlayers"]
+bus = &"Ambience"
+
+[node name="SFXPlayers" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SFXPlayers"]
+bus = &"Sound"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="SFXPlayers"]
+bus = &"Sound"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="SFXPlayers"]
+bus = &"Sound"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="SFXPlayers"]
+bus = &"Sound"
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="SFXPlayers"]
+bus = &"Sound"

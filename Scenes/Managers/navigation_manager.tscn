@@ -1,0 +1,144 @@
+[gd_scene load_steps=19 format=3 uid="uid://brso7a88vnrtk"]
+
+[ext_resource type="Script" uid="uid://dk0xpe10l2otu" path="res://Scripts/navigator.gd" id="1_ya5x6"]
+[ext_resource type="PackedScene" uid="uid://c4byfj8x7kau" path="res://Scenes/Locations/forest_clearing.tscn" id="2_b3sll"]
+[ext_resource type="PackedScene" uid="uid://dukqk0ky5ujg5" path="res://Scenes/TextScenes/ending.tscn" id="3_xs4q2"]
+[ext_resource type="PackedScene" uid="uid://brd7j4dofv54n" path="res://Scenes/TextScenes/temple_text_scene.tscn" id="4_jrx0l"]
+[ext_resource type="PackedScene" uid="uid://dd0ncxuqrpiy" path="res://Scenes/Locations/forest_entrance.tscn" id="5_qt13y"]
+[ext_resource type="PackedScene" uid="uid://c70umeev7pl2m" path="res://Scenes/Locations/hut.tscn" id="8_6b51o"]
+[ext_resource type="PackedScene" uid="uid://bwnn28w316u2v" path="res://Scenes/TextScenes/intro_text_scene.tscn" id="9_g0muf"]
+[ext_resource type="PackedScene" uid="uid://bj61ss3cn1w6a" path="res://Scenes/Locations/meadow.tscn" id="10_no5c1"]
+[ext_resource type="PackedScene" uid="uid://ciqyo2kyj0dd0" path="res://Scenes/Locations/river.tscn" id="11_cgpt6"]
+[ext_resource type="PackedScene" uid="uid://o4r6yycft467" path="res://Scenes/Locations/temple.tscn" id="13_3d6rm"]
+[ext_resource type="PackedScene" uid="uid://bedtd8xq78qfk" path="res://Scenes/AroundGame/main_menu.tscn" id="16_b6j8o"]
+
+[sub_resource type="Animation" id="Animation_r4kmv"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_5me08"]
+resource_name = "fade_in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_bfs0i"]
+resource_name = "fade_in_ending"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="Animation" id="Animation_fn1bk"]
+resource_name = "fade_in_main_menu"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="Animation" id="Animation_ve17l"]
+resource_name = "fade_in_slow"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="Animation" id="Animation_y2tub"]
+resource_name = "fade_out"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.933333)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y2tub"]
+_data = {
+&"RESET": SubResource("Animation_r4kmv"),
+&"fade_in": SubResource("Animation_5me08"),
+&"fade_in_ending": SubResource("Animation_bfs0i"),
+&"fade_in_main_menu": SubResource("Animation_fn1bk"),
+&"fade_in_slow": SubResource("Animation_ve17l"),
+&"fade_out": SubResource("Animation_y2tub")
+}
+
+[node name="NavigationManager" type="Node" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("1_ya5x6")
+animation_player = NodePath("TransitionScreen/AnimationPlayer")
+location_dict = Dictionary[String, PackedScene]({
+"clearing": ExtResource("2_b3sll"),
+"ending": ExtResource("3_xs4q2"),
+"enter": ExtResource("4_jrx0l"),
+"entrance": ExtResource("5_qt13y"),
+"hut": ExtResource("8_6b51o"),
+"intro_text": ExtResource("9_g0muf"),
+"meadow": ExtResource("10_no5c1"),
+"river": ExtResource("11_cgpt6"),
+"temple": ExtResource("13_3d6rm")
+})
+ending_scene = ExtResource("3_xs4q2")
+main_menu = ExtResource("16_b6j8o")
+
+[node name="TransitionScreen" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="ColorRect" type="ColorRect" parent="TransitionScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionScreen"]
+libraries = {
+&"": SubResource("AnimationLibrary_y2tub")
+}

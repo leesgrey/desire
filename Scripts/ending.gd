@@ -6,6 +6,10 @@ extends Node
 var timer: float = 0.
 
 
+func _ready() -> void:
+	DialogueManager.visible = false
+
+
 func _process(delta: float) -> void:
 	if corner_text.visible:
 		return

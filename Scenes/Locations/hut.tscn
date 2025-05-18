@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://c70umeev7pl2m"]
+
+[ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="1_j085m"]
+[ext_resource type="Texture2D" uid="uid://deqhsrwolvnue" path="res://Assets/iStock-1337103265.jpg" id="2_j085m"]
+[ext_resource type="Script" uid="uid://bq7wyhd72e3x5" path="res://Scripts/path_entrance.gd" id="3_gnxg1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fumex"]
+shader = ExtResource("1_j085m")
+shader_parameter/amount = 400
+shader_parameter/threshold = 0.25
+shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/invert = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j085m"]
+size = Vector2(225.25, 247.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnxg1"]
+size = Vector2(587.625, 225.75)
+
+[node name="Hut" type="Node2D"]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer"]
+material = SubResource("ShaderMaterial_fumex")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -233.0
+offset_top = -79.0
+offset_right = -407.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j085m")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="TempleEntrance" type="Area2D" parent="."]
+position = Vector2(219, 336)
+script = ExtResource("3_gnxg1")
+destination = "temple"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempleEntrance"]
+position = Vector2(591.375, 48.75)
+shape = SubResource("RectangleShape2D_j085m")
+
+[node name="MeadowEntrance" type="Area2D" parent="."]
+position = Vector2(153, 575)
+script = ExtResource("3_gnxg1")
+destination = "meadow"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeadowEntrance"]
+position = Vector2(141.188, 156.875)
+shape = SubResource("RectangleShape2D_gnxg1")

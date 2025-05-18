@@ -10,7 +10,9 @@ signal scene_transition_end
 
 var current_scene: String
 var next_scene: String
+
 var seen_paths: Array[Path]
+var seen_locations: Dictionary
 
 var ending_num: int
 
@@ -19,19 +21,23 @@ func _ready():
 	animation_player.animation_finished.connect(on_animation_finished)
 
 
-func change_scene(scene: String, is_path: bool = true, slow: bool = false, force_footsteps: bool = false):
+func change_scene(
+	scene: String, is_path: bool = true, slow: bool = false, force_footsteps: bool = false
+):
 	if slow:
 		animation_player.play("fade_in_slow")
 	else:
 		animation_player.play("fade_in")
 	next_scene = scene
 	if is_path or force_footsteps:
-		AudioManager.play_sound("footsteps_grass", AudioManager.SoundType.SFX, 0.5, 5.)
-	if is_path and !is_path_seen:
+		AudioManager.play_sound("footsteps_grass", AudioManager.SoundType.SFX, 0.5, 3.)
+	if is_path and !is_path_seen(current_scene):
 		var new_path = Path.new()
 		new_path.left = current_scene
 		new_path.right = next_scene
 		seen_paths.append(new_path)
+
+	add_to_seen_locations(current_scene)  # this sucks
 	scene_transition_start.emit()
 
 
@@ -50,10 +56,11 @@ func go_to_ending():
 
 
 func on_animation_finished(animation_name: String):
+	DialogueManager.clear_dialogue_box()
 	if animation_name == "fade_in_ending":
 		get_tree().change_scene_to_packed(ending_scene)
 		animation_player.play("fade_out")
-	
+
 	elif animation_name == "fade_in_main_menu":
 		get_tree().change_scene_to_packed(main_menu)
 		animation_player.play("fade_out")
@@ -70,3 +77,11 @@ func on_animation_finished(animation_name: String):
 func restart_game():
 	animation_player.play("fade_in_main_menu")
 	scene_transition_start.emit()
+
+
+func is_location_seen(location_name: String = current_scene):
+	return seen_locations.has(location_name)
+
+
+func add_to_seen_locations(location_name: String):
+	seen_locations[location_name] = null

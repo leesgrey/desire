@@ -8,6 +8,7 @@ var is_showing = false
 
 func _ready() -> void:
 	Navigator.scene_transition_start.connect(hide_tooltip)
+	DialogueManager.dialogue_event_start.connect(hide_tooltip)
 
 
 func show_tooltip(text: String):

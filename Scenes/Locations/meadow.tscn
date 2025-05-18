@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://bj61ss3cn1w6a"]
+
+[ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="1_5k12h"]
+[ext_resource type="Script" uid="uid://dhj0l8vdfl6cd" path="res://Scripts/Objects/flowers.gd" id="2_4knq5"]
+[ext_resource type="Texture2D" uid="uid://qmjsq4sne82o" path="res://Assets/iStock-2206603551.jpg" id="2_5k12h"]
+[ext_resource type="Script" uid="uid://bq7wyhd72e3x5" path="res://Scripts/path_entrance.gd" id="3_5k12h"]
+[ext_resource type="PackedScene" uid="uid://ch47db8m7ry8p" path="res://Scenes/Objects/flowers.tscn" id="3_njqy6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uu7do"]
+shader = ExtResource("1_5k12h")
+shader_parameter/amount = 400
+shader_parameter/threshold = 0.415
+shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/invert = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26qnn"]
+size = Vector2(202, 335)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5k12h"]
+size = Vector2(181, 295)
+
+[node name="Meadow" type="Node2D"]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer"]
+material = SubResource("ShaderMaterial_uu7do")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -58.0
+offset_right = -259.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5k12h")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HutEntrance" type="Area2D" parent="."]
+position = Vector2(311, 317)
+script = ExtResource("3_5k12h")
+destination = "hut"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HutEntrance"]
+position = Vector2(-214, 340.5)
+shape = SubResource("RectangleShape2D_26qnn")
+
+[node name="ClearingEntrance" type="Area2D" parent="."]
+position = Vector2(420, 523)
+script = ExtResource("3_5k12h")
+destination = "clearing"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClearingEntrance"]
+position = Vector2(520.5, 125.5)
+shape = SubResource("RectangleShape2D_5k12h")
+
+[node name="Flowers" type="Node2D" parent="."]
+position = Vector2(406, 563)
+script = ExtResource("2_4knq5")
+flowers = ExtResource("3_njqy6")

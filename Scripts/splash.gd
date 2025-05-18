@@ -8,16 +8,18 @@ extends Node2D
 var time_shown: float = 0.
 var blackout_time: float = 0.
 
+
 func _ready() -> void:
 	AudioManager.play_sound("forest_ambience", AudioManager.SoundType.AMBIENCE)
 
+
 func _process(delta: float) -> void:
-	if (blackout.visible):
+	if blackout.visible:
 		blackout_time += delta
-		
+
 		if blackout_time >= max_blackout_time:
 			get_tree().change_scene_to_packed(main_menu)
-	
+
 	else:
 		time_shown += delta
 
@@ -26,6 +28,6 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if (event is InputEventMouseButton or !blackout.visible):
+	if event is InputEventMouseButton or !blackout.visible:
 		if Input.is_action_just_pressed("click"):
 			blackout.visible = true

@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="DialogueEvent" load_steps=14 format=3 uid="uid://domid1kfink6p"]
+
+[ext_resource type="Script" uid="uid://ds8idpuuit6wn" path="res://Scripts/DialogueSystem/dialogue_line.gd" id="1_f6yv3"]
+[ext_resource type="Script" uid="uid://bxuepomjovu8v" path="res://Scripts/DialogueSystem/dialogue_event.gd" id="2_6yy3m"]
+[ext_resource type="Script" uid="uid://bxbg6v20dv75t" path="res://Scripts/DialogueSystem/dialogue_answer.gd" id="2_51kuk"]
+[ext_resource type="Script" uid="uid://c5m7333xsejoh" path="res://Scripts/DialogueSystem/dialogue_question.gd" id="2_4850x"]
+[ext_resource type="Script" uid="uid://bf7ltv6p23i8l" path="res://Scripts/DialogueSystem/dialogue_text.gd" id="3_16o7w"]
+[ext_resource type="Script" uid="uid://dfsdwlefk5xk1" path="res://Scripts/DialogueSystem/scene_dialogue_event.gd" id="4_16o7w"]
+
+[sub_resource type="Resource" id="Resource_16o7w"]
+script = ExtResource("3_16o7w")
+text = "you have work to do."
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_b1nrs"]
+script = ExtResource("2_6yy3m")
+event_id = ""
+lines = Array[ExtResource("1_f6yv3")]([SubResource("Resource_16o7w")])
+metadata/_custom_type_script = "uid://bxuepomjovu8v"
+
+[sub_resource type="Resource" id="Resource_bckrs"]
+script = ExtResource("2_51kuk")
+text = "no, stay"
+next_event = SubResource("Resource_b1nrs")
+line_id = ""
+metadata/_custom_type_script = "uid://bxbg6v20dv75t"
+
+[sub_resource type="Resource" id="Resource_ora8k"]
+script = ExtResource("3_16o7w")
+text = "something moody about leaving"
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_rdjet"]
+script = ExtResource("4_16o7w")
+next_scene = "ending"
+event_id = ""
+lines = Array[ExtResource("1_f6yv3")]([SubResource("Resource_ora8k")])
+metadata/_custom_type_script = "uid://dfsdwlefk5xk1"
+
+[sub_resource type="Resource" id="Resource_bdfmc"]
+script = ExtResource("2_51kuk")
+text = "yes, leave it be"
+next_event = SubResource("Resource_rdjet")
+line_id = ""
+metadata/_custom_type_script = "uid://bxbg6v20dv75t"
+
+[sub_resource type="Resource" id="Resource_51kuk"]
+script = ExtResource("2_4850x")
+prompt = "leave the forest?"
+answers = Dictionary[String, ExtResource("2_51kuk")]({
+"leave_no": SubResource("Resource_bckrs"),
+"leave_yes": SubResource("Resource_bdfmc")
+})
+line_id = "leave"
+metadata/_custom_type_script = "uid://c5m7333xsejoh"
+
+[resource]
+script = ExtResource("2_6yy3m")
+event_id = "leave_forest"
+lines = Array[ExtResource("1_f6yv3")]([SubResource("Resource_51kuk")])
+metadata/_custom_type_script = "uid://bxuepomjovu8v"

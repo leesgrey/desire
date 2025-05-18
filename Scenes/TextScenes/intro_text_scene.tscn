@@ -30,10 +30,9 @@ mouse_default_cursor_shape = 2
 script = ExtResource("1_vq83v")
 text_list = Array[String](["Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "Aenean sed quam malesuada, ornare nisl ac, scelerisque elit.", "Morbi in justo eu massa elementum congue.", "Mauris pharetra velit in tincidunt condimentum.", "Pellentesque sit amet quam justo.", "Pellentesque laoreet est eget augue ultrices commodo.", "Curabitur at quam vitae justo rhoncus elementum vitae vitae arcu.", "Cras vitae laoreet nunc.", "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer eget libero et neque eleifend sagittis.", "In hac habitasse platea dictumst. "])
 text_container = NodePath("ContentLayer/Control/Content/ScrollContainer/VTextContainer")
-next_scene = "forest entrance"
+next_scene = "entrance"
 scroll_container = NodePath("ContentLayer/Control/Content/ScrollContainer")
 indicator = NodePath("ContentLayer/Control/Content/NextIndicator")
-debug_force_allow_input = true
 
 [node name="ContentLayer" type="CanvasLayer" parent="."]
 
@@ -137,6 +136,7 @@ width = 1.0
 layer = -1
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,6 +155,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="PlaceholderTextHolder" type="Control" parent="CanvasLayer/Control"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -222,4 +223,5 @@ offset_bottom = 986.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_aoro7")
+expand_mode = 2
 stretch_mode = 5

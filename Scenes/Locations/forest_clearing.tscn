@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://c4byfj8x7kau"]
+
+[ext_resource type="Script" uid="uid://dosl6k3oxikbb" path="res://Scripts/location_scene.gd" id="1_reydc"]
+[ext_resource type="Resource" uid="uid://duhqqikvnnayn" path="res://Resources/DialogueEvents/forest_clearing.tres" id="2_reydc"]
+[ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="3_7vli4"]
+[ext_resource type="Texture2D" uid="uid://b4hrrobeph066" path="res://Assets/iStock-626466246(2).jpg" id="4_7vli4"]
+[ext_resource type="Script" uid="uid://mw6y6byognhx" path="res://Scripts/Objects/writings.gd" id="4_kpc0t"]
+[ext_resource type="PackedScene" uid="uid://dfsmowramoyli" path="res://Scenes/Objects/hidden_chest.tscn" id="5_0fg15"]
+[ext_resource type="PackedScene" uid="uid://bwnrn1jenhnb0" path="res://Scenes/Objects/burning_chest.tscn" id="6_8nc6q"]
+[ext_resource type="Script" uid="uid://bq7wyhd72e3x5" path="res://Scripts/path_entrance.gd" id="6_fjb4u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ysj1"]
+shader = ExtResource("3_7vli4")
+shader_parameter/amount = 400
+shader_parameter/threshold = 0.3
+shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/invert = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vli4"]
+size = Vector2(472, 162)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjb4u"]
+size = Vector2(255.5, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ysj1"]
+size = Vector2(121.25, 140)
+
+[node name="ForestClearing" type="Node2D"]
+script = ExtResource("1_reydc")
+starting_dialogue = ExtResource("2_reydc")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer"]
+material = SubResource("ShaderMaterial_0ysj1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -167.0
+offset_top = -80.0
+offset_right = -341.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_7vli4")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="ForestEntrance" type="Area2D" parent="."]
+position = Vector2(504, 664)
+script = ExtResource("6_fjb4u")
+destination = "entrance"
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ForestEntrance"]
+position = Vector2(-267, 48)
+shape = SubResource("RectangleShape2D_7vli4")
+
+[node name="MeadowEntrance" type="Area2D" parent="."]
+position = Vector2(890, 341)
+script = ExtResource("6_fjb4u")
+destination = "meadow"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MeadowEntrance"]
+position = Vector2(-49, 60)
+shape = SubResource("RectangleShape2D_fjb4u")
+
+[node name="RiverEntrance" type="Area2D" parent="."]
+position = Vector2(209, 385)
+script = ExtResource("6_fjb4u")
+destination = "river"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RiverEntrance"]
+position = Vector2(-31, -6)
+shape = SubResource("RectangleShape2D_0ysj1")
+
+[node name="Writings" type="Node2D" parent="."]
+position = Vector2(439, 557)
+script = ExtResource("4_kpc0t")
+chest = ExtResource("5_0fg15")
+burning_chest = ExtResource("6_8nc6q")

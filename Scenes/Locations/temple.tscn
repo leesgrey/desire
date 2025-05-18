@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://o4r6yycft467"]
+
+[ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="1_o8rjx"]
+[ext_resource type="Texture2D" uid="uid://bb5gjp564n8d1" path="res://Assets/iStock-1390125890.jpg" id="2_o8rjx"]
+[ext_resource type="Script" uid="uid://bq7wyhd72e3x5" path="res://Scripts/path_entrance.gd" id="3_hxohf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1ygs"]
+shader = ExtResource("1_o8rjx")
+shader_parameter/amount = 275
+shader_parameter/threshold = 0.4
+shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/invert = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8rjx"]
+size = Vector2(224, 251)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxohf"]
+size = Vector2(640, 200.5)
+
+[node name="Temple" type="Node2D"]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer"]
+material = SubResource("ShaderMaterial_e1ygs")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -248.0
+offset_top = -76.0
+offset_right = -411.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_o8rjx")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="EnterTemple" type="Area2D" parent="."]
+position = Vector2(498, 403)
+script = ExtResource("3_hxohf")
+destination = "enter"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnterTemple"]
+position = Vector2(-31, -94.5)
+shape = SubResource("RectangleShape2D_o8rjx")
+
+[node name="HutEntrance" type="Area2D" parent="."]
+position = Vector2(175, 358)
+script = ExtResource("3_hxohf")
+destination = "hut"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HutEntrance"]
+position = Vector2(-19, 394.25)
+shape = SubResource("RectangleShape2D_hxohf")

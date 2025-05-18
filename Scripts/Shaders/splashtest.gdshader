@@ -2,8 +2,8 @@
 Shader from Godot Shaders - the free shader library.
 godotshaders.com/shader/pixelate
 
-This shader is under CC0 license. Feel free to use, improve and 
-change this shader according to your needs and consider sharing 
+This shader is under CC0 license. Feel free to use, improve and
+change this shader according to your needs and consider sharing
 the modified result to godotshaders.com.
 */
 
@@ -17,16 +17,16 @@ uniform bool invert = false;
 void fragment()
 {
 	vec2 grid_uv = round(UV * float(amount)) / float(amount);
-	
+
 	vec4 text = texture(TEXTURE, grid_uv);
-	
+
 	if (text.a == 0.)
 	{
 		COLOR = vec4(0., 0., 0., 0.);
 	}
 	else
 	{float gray = (text.r + text.g + text.b) / 3.;
-	
+
 	if (invert)
 	{
 		if (gray >= threshold){
@@ -47,6 +47,6 @@ void fragment()
 			COLOR = vec4(0., 0., 0., 1.);
 		}
 	}
-		
-	}	
+
+	}
 }

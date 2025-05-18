@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=25 format=3 uid="uid://dd1c33ktwh6ap"]
+[gd_resource type="Theme" load_steps=26 format=3 uid="uid://dd1c33ktwh6ap"]
 
 [ext_resource type="FontFile" uid="uid://b2rdx04vgumio" path="res://Assets/Fonts/AlteHaasGroteskRegular.ttf" id="1_470mv"]
 [ext_resource type="FontFile" uid="uid://dbhuwj7tmc6sj" path="res://Assets/Fonts/Chomsky.otf" id="1_a2l2q"]
@@ -53,10 +53,16 @@ vertical = true
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_466ly"]
 content_margin_left = 8.0
-content_margin_top = 8.0
+content_margin_top = 16.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
 color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52mx2"]
+content_margin_bottom = 24.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_58jnp"]
 
@@ -114,6 +120,10 @@ ChoicesPanelContainer/base_type = &"PanelContainer"
 ChoicesPanelContainer/styles/panel = SubResource("StyleBoxLine_52mx2")
 DialogueEvent/base_type = &"PanelContainer"
 DialogueEvent/styles/panel = SubResource("StyleBoxLine_466ly")
+DialogueSidebar/base_type = &"PanelContainer"
+DialogueSidebar/styles/panel = SubResource("StyleBoxFlat_52mx2")
+DialogueSidebarVBox/base_type = &"VBoxContainer"
+DialogueSidebarVBox/constants/separation = 0
 HBoxContainer/constants/separation = 36
 HSeparator/constants/separation = 8
 HSeparator/styles/separator = SubResource("StyleBoxEmpty_58jnp")
@@ -125,6 +135,9 @@ HeaderMedium/font_sizes/normal_font_size = 64
 HeaderMedium/fonts/normal_font = ExtResource("1_a2l2q")
 HistoryText/base_type = &"RichTextLabel"
 HistoryText/colors/default_color = Color(0.507096, 0.505719, 0.600364, 1)
+IndicatorMarginContainer/base_type = &"MarginContainer"
+IndicatorMarginContainer/constants/margin_right = 16
+MarginContainer/constants/margin_left = 16
 PanelContainer/styles/panel = SubResource("StyleBoxLine_58jnp")
 PathTooltip/base_type = &"PanelContainer"
 PathTooltip/styles/panel = SubResource("StyleBoxFlat_58jnp")

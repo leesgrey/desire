@@ -32,15 +32,18 @@ func _start_game():
 func _quit_game():
 	get_tree().quit()
 
+
 func _open_settings():
 	var bird_sound = bird_sound_names[randi_range(0, len(bird_sound_names) - 1)]
 	AudioManager.play_sound(bird_sound, AudioManager.SoundType.SFX, 0.1, 2.)
 	main_menu.visible = false
 	settings_menu.visible = true
 
+
 func _return_to_main_menu():
 	settings_menu.visible = false
 	main_menu.visible = true
+
 
 func _on_audio_caption_toggled(toggled_on: bool):
 	SettingsManager.set_audio_caption_visibility(toggled_on)

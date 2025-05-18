@@ -21,24 +21,22 @@ func _ready():
 	animation_player.animation_finished.connect(on_animation_finished)
 
 
-func change_scene(scene: String, is_path: bool = true, slow: bool = false, force_footsteps: bool = false):
+func change_scene(
+	scene: String, is_path: bool = true, slow: bool = false, force_footsteps: bool = false
+):
 	if slow:
 		animation_player.play("fade_in_slow")
 	else:
 		animation_player.play("fade_in")
 	next_scene = scene
 	if is_path or force_footsteps:
-		AudioManager.play_sound("footsteps_grass", AudioManager.SoundType.SFX, 0.5, 5.)
+		AudioManager.play_sound("footsteps_grass", AudioManager.SoundType.SFX, 0.5, 3.)
 	if is_path and !is_path_seen(current_scene):
 		var new_path = Path.new()
 		new_path.left = current_scene
 		new_path.right = next_scene
 		seen_paths.append(new_path)
-		
-	
-	for seen_path in seen_paths:
-		print(seen_path.left + " <-> " + seen_path.right)
-	
+
 	add_to_seen_locations(current_scene)  # this sucks
 	scene_transition_start.emit()
 
@@ -62,7 +60,7 @@ func on_animation_finished(animation_name: String):
 	if animation_name == "fade_in_ending":
 		get_tree().change_scene_to_packed(ending_scene)
 		animation_player.play("fade_out")
-	
+
 	elif animation_name == "fade_in_main_menu":
 		get_tree().change_scene_to_packed(main_menu)
 		animation_player.play("fade_out")

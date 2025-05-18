@@ -1,0 +1,83 @@
+[gd_scene load_steps=18 format=3 uid="uid://cwdxntryxjx8j"]
+
+[ext_resource type="Script" uid="uid://conwluc1vi764" path="res://Scripts/interactable_object.gd" id="1_3u65u"]
+[ext_resource type="Script" uid="uid://ds8idpuuit6wn" path="res://Scripts/DialogueSystem/dialogue_line.gd" id="2_3np0x"]
+[ext_resource type="Script" uid="uid://bf7ltv6p23i8l" path="res://Scripts/DialogueSystem/dialogue_text.gd" id="3_4ys4a"]
+[ext_resource type="Script" uid="uid://bxbg6v20dv75t" path="res://Scripts/DialogueSystem/dialogue_answer.gd" id="4_kdwwr"]
+[ext_resource type="Script" uid="uid://bxuepomjovu8v" path="res://Scripts/DialogueSystem/dialogue_event.gd" id="5_gljos"]
+[ext_resource type="Script" uid="uid://c5m7333xsejoh" path="res://Scripts/DialogueSystem/dialogue_question.gd" id="6_ohtss"]
+[ext_resource type="Shader" uid="uid://fxgpk62lup7m" path="res://Scripts/Shaders/axeshader.gdshader" id="7_nj6vg"]
+[ext_resource type="Texture2D" uid="uid://jbrhps7f873d" path="res://Assets/axe3.jpg" id="8_nj6vg"]
+
+[sub_resource type="Resource" id="Resource_8igxl"]
+script = ExtResource("3_4ys4a")
+text = "axe!"
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_kdwwr"]
+script = ExtResource("4_kdwwr")
+text = "no"
+line_id = ""
+metadata/_custom_type_script = "uid://bxbg6v20dv75t"
+
+[sub_resource type="Resource" id="Resource_ythkr"]
+script = ExtResource("3_4ys4a")
+text = "it's shameful to leave such metalwork in a place like this. you take the axe.."
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_nj6vg"]
+script = ExtResource("5_gljos")
+event_id = ""
+lines = Array[ExtResource("2_3np0x")]([SubResource("Resource_ythkr")])
+metadata/_custom_type_script = "uid://bxuepomjovu8v"
+
+[sub_resource type="Resource" id="Resource_3np0x"]
+script = ExtResource("4_kdwwr")
+text = "take axe"
+next_event = SubResource("Resource_nj6vg")
+line_id = ""
+metadata/_custom_type_script = "uid://bxbg6v20dv75t"
+
+[sub_resource type="Resource" id="Resource_ps1ab"]
+script = ExtResource("6_ohtss")
+prompt = "take axe?"
+answers = Dictionary[String, ExtResource("4_kdwwr")]({
+"": SubResource("Resource_kdwwr"),
+"take_axe": SubResource("Resource_3np0x")
+})
+line_id = ""
+metadata/_custom_type_script = "uid://c5m7333xsejoh"
+
+[sub_resource type="Resource" id="Resource_4whr3"]
+script = ExtResource("5_gljos")
+event_id = ""
+lines = Array[ExtResource("2_3np0x")]([SubResource("Resource_8igxl"), SubResource("Resource_ps1ab")])
+metadata/_custom_type_script = "uid://bxuepomjovu8v"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_udvks"]
+shader = ExtResource("7_nj6vg")
+shader_parameter/amount = 70
+shader_parameter/threshold = 0.25
+shader_parameter/transparency_threshold = 2.9
+shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/invert = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nj6vg"]
+size = Vector2(90, 70)
+
+[node name="Axe" type="Area2D"]
+script = ExtResource("1_3u65u")
+dialogue_event = SubResource("Resource_4whr3")
+label = "axe"
+id = "axe"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_udvks")
+scale = Vector2(0.182572, 0.182572)
+texture = ExtResource("8_nj6vg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 1)
+shape = SubResource("RectangleShape2D_nj6vg")

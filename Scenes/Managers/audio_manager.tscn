@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dok7h721x376y"]
+[gd_scene load_steps=16 format=3 uid="uid://dok7h721x376y"]
 
 [ext_resource type="Script" uid="uid://dads4o36lw05r" path="res://Scripts/audio_manager.gd" id="1_uwgts"]
 [ext_resource type="Script" uid="uid://cwcapt145f7mp" path="res://Scripts/captioned_audio.gd" id="2_57ce3"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dstc13lfpoemd" path="res://Assets/Audio/night_ambience.wav" id="5_pewo8"]
 [ext_resource type="AudioStream" uid="uid://54u58vlqnkx8" path="res://Assets/Audio/loon.wav" id="6_xf8w6"]
 [ext_resource type="AudioStream" uid="uid://w2nqvtnuoadn" path="res://Assets/Audio/mourning_dove.wav" id="7_hx124"]
+[ext_resource type="AudioStream" uid="uid://bp4ksj2ean0ys" path="res://Assets/Audio/804836__benharmsound__burning-bag-of-pinecones.wav" id="8_57ce3"]
 [ext_resource type="Theme" uid="uid://dd1c33ktwh6ap" path="res://main_theme.tres" id="8_m2il7"]
 
 [sub_resource type="Resource" id="Resource_mjqhu"]
@@ -39,10 +40,17 @@ audio_stream = ExtResource("7_hx124")
 caption = "mourning dove call"
 metadata/_custom_type_script = "uid://cwcapt145f7mp"
 
+[sub_resource type="Resource" id="Resource_bf05v"]
+script = ExtResource("2_57ce3")
+audio_stream = ExtResource("8_57ce3")
+caption = "fire crackling"
+metadata/_custom_type_script = "uid://cwcapt145f7mp"
+
 [node name="AudioManager" type="Node" node_paths=PackedStringArray("audio_caption_layer", "ambience_players", "sfx_players", "sound_captions")]
 script = ExtResource("1_uwgts")
 stream_dict = Dictionary[String, ExtResource("2_57ce3")]({
 "crow": SubResource("Resource_mjqhu"),
+"fire": SubResource("Resource_bf05v"),
 "footsteps_grass": SubResource("Resource_lwpe1"),
 "forest_ambience": SubResource("Resource_0hehx"),
 "loon": SubResource("Resource_5kf6k"),
@@ -81,19 +89,27 @@ alignment = 2
 [node name="AmbiencePlayers" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AmbiencePlayers"]
+bus = &"Ambience"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="AmbiencePlayers"]
+bus = &"Ambience"
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="AmbiencePlayers"]
+bus = &"Ambience"
 
 [node name="SFXPlayers" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SFXPlayers"]
+bus = &"Sound"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="SFXPlayers"]
+bus = &"Sound"
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="SFXPlayers"]
+bus = &"Sound"
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="SFXPlayers"]
+bus = &"Sound"
 
 [node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="SFXPlayers"]
+bus = &"Sound"

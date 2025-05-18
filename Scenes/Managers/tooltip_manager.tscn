@@ -7,7 +7,7 @@
 layer = 2
 script = ExtResource("1_8jn1a")
 tooltip = NodePath("PathTooltip")
-location_text = NodePath("PathTooltip/Panel/MarginContainer/RichTextLabel")
+location_text = NodePath("PathTooltip/Panel/RichTextLabel")
 
 [node name="PathTooltip" parent="." instance=ExtResource("2_c2wa3")]
 visible = false
@@ -17,11 +17,5 @@ offset_left = 28.0
 offset_top = 24.0
 offset_right = 48.0
 offset_bottom = 55.0
-
-[node name="MarginContainer" parent="PathTooltip/Panel" index="0"]
-size_flags_horizontal = 0
-
-[node name="RichTextLabel" parent="PathTooltip/Panel/MarginContainer" index="0"]
-text = "w"
 
 [editable path="PathTooltip"]

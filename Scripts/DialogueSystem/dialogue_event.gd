@@ -4,3 +4,7 @@ extends Resource
 
 @export var event_id: String
 @export var lines: Array[DialogueLine]
+
+
+func callback():
+	pass

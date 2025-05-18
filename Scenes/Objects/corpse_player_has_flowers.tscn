@@ -1,0 +1,107 @@
+[gd_scene load_steps=22 format=3 uid="uid://b8uoody5vpy46"]
+
+[ext_resource type="Script" uid="uid://conwluc1vi764" path="res://Scripts/interactable_object.gd" id="1_d25iw"]
+[ext_resource type="Script" uid="uid://ds8idpuuit6wn" path="res://Scripts/DialogueSystem/dialogue_line.gd" id="2_y8lrv"]
+[ext_resource type="Script" uid="uid://bf7ltv6p23i8l" path="res://Scripts/DialogueSystem/dialogue_text.gd" id="3_0i5kk"]
+[ext_resource type="Script" uid="uid://bxbg6v20dv75t" path="res://Scripts/DialogueSystem/dialogue_answer.gd" id="4_2gx6a"]
+[ext_resource type="Script" uid="uid://bxuepomjovu8v" path="res://Scripts/DialogueSystem/dialogue_event.gd" id="5_3javm"]
+[ext_resource type="Script" uid="uid://c5m7333xsejoh" path="res://Scripts/DialogueSystem/dialogue_question.gd" id="6_26bv5"]
+[ext_resource type="Shader" uid="uid://cv3t8tk3tipxt" path="res://Scripts/Shaders/splashtest.gdshader" id="7_y8lrv"]
+[ext_resource type="Texture2D" uid="uid://b21ps4l2jks6v" path="res://Assets/corpse.png" id="8_0i5kk"]
+
+[sub_resource type="Resource" id="Resource_gk0bm"]
+script = ExtResource("3_0i5kk")
+text = "description of the corpse 1"
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_8igxl"]
+script = ExtResource("3_0i5kk")
+text = "description of the corpse 2"
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_3javm"]
+script = ExtResource("4_2gx6a")
+text = "leave"
+line_id = ""
+metadata/_custom_type_script = "uid://bxbg6v20dv75t"
+
+[sub_resource type="Resource" id="Resource_gunrv"]
+script = ExtResource("3_0i5kk")
+text = "you cleanse the rot."
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_duy63"]
+script = ExtResource("5_3javm")
+event_id = ""
+lines = Array[ExtResource("2_y8lrv")]([SubResource("Resource_gunrv")])
+metadata/_custom_type_script = "uid://bxuepomjovu8v"
+
+[sub_resource type="Resource" id="Resource_jhb6s"]
+script = ExtResource("4_2gx6a")
+text = "burn"
+next_event = SubResource("Resource_duy63")
+line_id = ""
+metadata/_custom_type_script = "uid://bxbg6v20dv75t"
+
+[sub_resource type="Resource" id="Resource_y8lrv"]
+script = ExtResource("3_0i5kk")
+text = "don't be soft."
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_0i5kk"]
+script = ExtResource("5_3javm")
+event_id = ""
+lines = Array[ExtResource("2_y8lrv")]([SubResource("Resource_y8lrv")])
+metadata/_custom_type_script = "uid://bxuepomjovu8v"
+
+[sub_resource type="Resource" id="Resource_2gx6a"]
+script = ExtResource("4_2gx6a")
+text = "leave flowers"
+next_event = SubResource("Resource_0i5kk")
+line_id = ""
+metadata/_custom_type_script = "uid://bxbg6v20dv75t"
+
+[sub_resource type="Resource" id="Resource_ps1ab"]
+script = ExtResource("6_26bv5")
+prompt = "what do you do?"
+answers = Dictionary[String, ExtResource("4_2gx6a")]({
+"": SubResource("Resource_3javm"),
+"burn_corpse": SubResource("Resource_jhb6s"),
+"leave_flowers": SubResource("Resource_2gx6a")
+})
+line_id = ""
+metadata/_custom_type_script = "uid://c5m7333xsejoh"
+
+[sub_resource type="Resource" id="Resource_d25iw"]
+script = ExtResource("5_3javm")
+event_id = ""
+lines = Array[ExtResource("2_y8lrv")]([SubResource("Resource_gk0bm"), SubResource("Resource_8igxl"), SubResource("Resource_ps1ab")])
+metadata/_custom_type_script = "uid://bxuepomjovu8v"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2gx6a"]
+shader = ExtResource("7_y8lrv")
+shader_parameter/amount = 80
+shader_parameter/threshold = 0.5
+shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/invert = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8lrv"]
+size = Vector2(172, 100)
+
+[node name="CorpsePlayerHasFlowers" type="Area2D"]
+script = ExtResource("1_d25iw")
+dialogue_event = SubResource("Resource_d25iw")
+label = "corpse"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2gx6a")
+scale = Vector2(2.05867, 2.05867)
+texture = ExtResource("8_0i5kk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -3)
+shape = SubResource("RectangleShape2D_y8lrv")

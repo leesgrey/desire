@@ -30,10 +30,9 @@ mouse_default_cursor_shape = 2
 script = ExtResource("1_vq83v")
 text_list = Array[String](["Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "Aenean sed quam malesuada, ornare nisl ac, scelerisque elit.", "Morbi in justo eu massa elementum congue.", "Mauris pharetra velit in tincidunt condimentum.", "Pellentesque sit amet quam justo.", "Pellentesque laoreet est eget augue ultrices commodo.", "Curabitur at quam vitae justo rhoncus elementum vitae vitae arcu.", "Cras vitae laoreet nunc.", "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer eget libero et neque eleifend sagittis.", "In hac habitasse platea dictumst. "])
 text_container = NodePath("ContentLayer/Control/Content/ScrollContainer/VTextContainer")
-next_scene = "forest entrance"
+next_scene = "entrance"
 scroll_container = NodePath("ContentLayer/Control/Content/ScrollContainer")
 indicator = NodePath("ContentLayer/Control/Content/NextIndicator")
-debug_force_allow_input = true
 
 [node name="ContentLayer" type="CanvasLayer" parent="."]
 

@@ -3,6 +3,7 @@ extends Area2D
 
 @export var destination: String
 var seen: bool = false
+var transitioning: bool = false
 
 
 func _enter_tree() -> void:
@@ -12,6 +13,8 @@ func _enter_tree() -> void:
 func _mouse_enter():
 	if seen:
 		TooltipHandler.show_tooltip(destination)
+	else:
+		TooltipHandler.show_tooltip("?")
 
 
 func _mouse_exit() -> void:
@@ -19,6 +22,9 @@ func _mouse_exit() -> void:
 
 
 func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
+	if transitioning:
+		return
+
 	if event is InputEventMouseButton:
 		if Input.is_action_just_pressed("click"):
 			Navigator.change_scene(destination)

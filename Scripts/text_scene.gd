@@ -37,6 +37,7 @@ func _show_next_line() -> bool:
 	new_line.bbcode_enabled = true
 	new_line.text = text_list[text_container.get_child_count()]
 	new_line.fit_content = true
+	new_line.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	text_container.add_child(new_line)
 	if current_num_lines == len(text_list) - 1:
 		indicator.text = "[b]>>[/b]"

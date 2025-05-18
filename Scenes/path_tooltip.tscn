@@ -15,11 +15,7 @@ offset_bottom = 29.0
 mouse_filter = 2
 theme_type_variation = &"PathTooltip"
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
 layout_mode = 2
 mouse_filter = 2
 text = "aswagdas"

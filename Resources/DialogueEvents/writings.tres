@@ -24,6 +24,25 @@ text = "description of what the writing is about"
 line_id = ""
 metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
 
+[sub_resource type="Resource" id="Resource_d7y7v"]
+script = ExtResource("2_que14")
+text = "something moody about the fire, righteousness"
+line_id = ""
+metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
+
+[sub_resource type="Resource" id="Resource_que14"]
+script = ExtResource("5_uinkd")
+event_id = ""
+lines = Array[ExtResource("1_d7y7v")]([SubResource("Resource_d7y7v")])
+metadata/_custom_type_script = "uid://bxuepomjovu8v"
+
+[sub_resource type="Resource" id="Resource_8tcdo"]
+script = ExtResource("3_8tcdo")
+text = "yes"
+next_event = SubResource("Resource_que14")
+line_id = ""
+metadata/_custom_type_script = "uid://bxbg6v20dv75t"
+
 [sub_resource type="Resource" id="Resource_xapy8"]
 script = ExtResource("3_8tcdo")
 text = "idk"
@@ -49,25 +68,6 @@ metadata/_custom_type_script = "uid://bxuepomjovu8v"
 script = ExtResource("3_8tcdo")
 text = "no"
 next_event = SubResource("Resource_uinkd")
-line_id = ""
-metadata/_custom_type_script = "uid://bxbg6v20dv75t"
-
-[sub_resource type="Resource" id="Resource_d7y7v"]
-script = ExtResource("2_que14")
-text = "something moody about the fire, righteousness"
-line_id = ""
-metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
-
-[sub_resource type="Resource" id="Resource_que14"]
-script = ExtResource("5_uinkd")
-event_id = ""
-lines = Array[ExtResource("1_d7y7v")]([SubResource("Resource_d7y7v")])
-metadata/_custom_type_script = "uid://bxuepomjovu8v"
-
-[sub_resource type="Resource" id="Resource_8tcdo"]
-script = ExtResource("3_8tcdo")
-text = "yes"
-next_event = SubResource("Resource_que14")
 line_id = ""
 metadata/_custom_type_script = "uid://bxbg6v20dv75t"
 

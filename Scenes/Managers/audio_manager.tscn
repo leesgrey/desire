@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dok7h721x376y"]
+[gd_scene load_steps=18 format=3 uid="uid://dok7h721x376y"]
 
 [ext_resource type="Script" uid="uid://dads4o36lw05r" path="res://Scripts/audio_manager.gd" id="1_uwgts"]
 [ext_resource type="Script" uid="uid://cwcapt145f7mp" path="res://Scripts/captioned_audio.gd" id="2_57ce3"]
@@ -9,11 +9,18 @@
 [ext_resource type="AudioStream" uid="uid://w2nqvtnuoadn" path="res://Assets/Audio/mourning_dove.wav" id="7_hx124"]
 [ext_resource type="AudioStream" uid="uid://bp4ksj2ean0ys" path="res://Assets/Audio/804836__benharmsound__burning-bag-of-pinecones.wav" id="8_57ce3"]
 [ext_resource type="Theme" uid="uid://dd1c33ktwh6ap" path="res://main_theme.tres" id="8_m2il7"]
+[ext_resource type="AudioStream" uid="uid://doeagbe1ectbb" path="res://Assets/Audio/bird_call.wav" id="9_bf05v"]
 
 [sub_resource type="Resource" id="Resource_mjqhu"]
 script = ExtResource("2_57ce3")
 audio_stream = ExtResource("3_bf05v")
 caption = "crow caws"
+metadata/_custom_type_script = "uid://cwcapt145f7mp"
+
+[sub_resource type="Resource" id="Resource_bf05v"]
+script = ExtResource("2_57ce3")
+audio_stream = ExtResource("8_57ce3")
+caption = "fire crackling"
 metadata/_custom_type_script = "uid://cwcapt145f7mp"
 
 [sub_resource type="Resource" id="Resource_lwpe1"]
@@ -40,15 +47,16 @@ audio_stream = ExtResource("7_hx124")
 caption = "mourning dove call"
 metadata/_custom_type_script = "uid://cwcapt145f7mp"
 
-[sub_resource type="Resource" id="Resource_bf05v"]
+[sub_resource type="Resource" id="Resource_4savl"]
 script = ExtResource("2_57ce3")
-audio_stream = ExtResource("8_57ce3")
-caption = "fire crackling"
+audio_stream = ExtResource("9_bf05v")
+caption = "bird call"
 metadata/_custom_type_script = "uid://cwcapt145f7mp"
 
 [node name="AudioManager" type="Node" node_paths=PackedStringArray("audio_caption_layer", "ambience_players", "sfx_players", "sound_captions")]
 script = ExtResource("1_uwgts")
 stream_dict = Dictionary[String, ExtResource("2_57ce3")]({
+"bird": SubResource("Resource_4savl"),
 "crow": SubResource("Resource_mjqhu"),
 "fire": SubResource("Resource_bf05v"),
 "footsteps_grass": SubResource("Resource_lwpe1"),

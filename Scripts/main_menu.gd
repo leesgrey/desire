@@ -7,7 +7,7 @@ extends Node2D
 @export var settings_menu: Control
 @export var main_menu: Control
 @export var settings_back_button: Button
-@export var audio_caption_checkbox: CheckBox
+@export var audio_caption_checkbox: CheckButton
 @export var buttons_container: VBoxContainer
 
 @export var bird_sound_names: Array[String]
@@ -20,8 +20,12 @@ func _ready():
 	settings_back_button.pressed.connect(_return_to_main_menu)
 	audio_caption_checkbox.toggled.connect(_on_audio_caption_toggled)
 
+	main_menu.visible = true
+	settings_menu.visible = false
+
 
 func _start_game():
+
 	main_menu.process_mode = Node.PROCESS_MODE_DISABLED
 	AudioManager.play_sound("crow", AudioManager.SoundType.SFX, 0., 3.)
 	Navigator.change_scene(next_scene, false, true, true)

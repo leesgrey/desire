@@ -11,6 +11,12 @@
 [ext_resource type="Theme" uid="uid://dd1c33ktwh6ap" path="res://main_theme.tres" id="8_m2il7"]
 [ext_resource type="AudioStream" uid="uid://doeagbe1ectbb" path="res://Assets/Audio/bird_call.wav" id="9_bf05v"]
 
+[sub_resource type="Resource" id="Resource_4savl"]
+script = ExtResource("2_57ce3")
+audio_stream = ExtResource("9_bf05v")
+caption = "bird call"
+metadata/_custom_type_script = "uid://cwcapt145f7mp"
+
 [sub_resource type="Resource" id="Resource_mjqhu"]
 script = ExtResource("2_57ce3")
 audio_stream = ExtResource("3_bf05v")
@@ -45,12 +51,6 @@ metadata/_custom_type_script = "uid://cwcapt145f7mp"
 script = ExtResource("2_57ce3")
 audio_stream = ExtResource("7_hx124")
 caption = "mourning dove call"
-metadata/_custom_type_script = "uid://cwcapt145f7mp"
-
-[sub_resource type="Resource" id="Resource_4savl"]
-script = ExtResource("2_57ce3")
-audio_stream = ExtResource("9_bf05v")
-caption = "bird call"
 metadata/_custom_type_script = "uid://cwcapt145f7mp"
 
 [node name="AudioManager" type="Node" node_paths=PackedStringArray("audio_caption_layer", "ambience_players", "sfx_players", "sound_captions")]

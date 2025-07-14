@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c4byfj8x7kau" path="res://Scenes/Locations/forest_clearing.tscn" id="2_b3sll"]
 [ext_resource type="PackedScene" uid="uid://dukqk0ky5ujg5" path="res://Scenes/TextScenes/ending.tscn" id="3_xs4q2"]
 [ext_resource type="PackedScene" uid="uid://brd7j4dofv54n" path="res://Scenes/TextScenes/temple_text_scene.tscn" id="4_jrx0l"]
-[ext_resource type="PackedScene" uid="uid://dd0ncxuqrpiy" path="res://Scenes/Locations/forest_entrance.tscn" id="5_qt13y"]
+[ext_resource type="PackedScene" uid="uid://d2lxegt3s0k8k" path="res://Scenes/Locations/forest_edge.tscn" id="5_27v2j"]
 [ext_resource type="PackedScene" uid="uid://c70umeev7pl2m" path="res://Scenes/Locations/hut.tscn" id="8_6b51o"]
 [ext_resource type="PackedScene" uid="uid://bwnn28w316u2v" path="res://Scenes/TextScenes/intro_text_scene.tscn" id="9_g0muf"]
 [ext_resource type="PackedScene" uid="uid://bj61ss3cn1w6a" path="res://Scenes/Locations/meadow.tscn" id="10_no5c1"]
@@ -116,7 +116,7 @@ location_dict = Dictionary[String, PackedScene]({
 "clearing": ExtResource("2_b3sll"),
 "ending": ExtResource("3_xs4q2"),
 "enter": ExtResource("4_jrx0l"),
-"entrance": ExtResource("5_qt13y"),
+"entrance": ExtResource("5_27v2j"),
 "hut": ExtResource("8_6b51o"),
 "intro_text": ExtResource("9_g0muf"),
 "meadow": ExtResource("10_no5c1"),

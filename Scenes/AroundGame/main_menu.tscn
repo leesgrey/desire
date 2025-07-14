@@ -85,7 +85,6 @@ stretch_mode = 6
 [node name="ContentLayer" type="CanvasLayer" parent="."]
 
 [node name="MainMenu" type="Control" parent="ContentLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,13 +103,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Vertical" type="Line2D" parent="ContentLayer/MainMenu/UpperLeft"]
-points = PackedVector2Array(20, 0, 20, 133)
+points = PackedVector2Array(20, 0, 20, 93)
 width = 1.0
 
 [node name="Horizontal" type="Line2D" parent="ContentLayer/MainMenu/UpperLeft"]
 position = Vector2(-0.193651, 3.67937)
 scale = Vector2(0.806349, 0.806349)
-points = PackedVector2Array(0, 20, 325.161, 20)
+points = PackedVector2Array(0, 20, 413.213, 20)
 width = 1.0
 
 [node name="FlavorText" type="RichTextLabel" parent="ContentLayer/MainMenu/UpperLeft"]
@@ -121,8 +120,7 @@ offset_right = 511.0
 offset_bottom = 84.0
 theme_type_variation = &"SubtitleText"
 bbcode_enabled = true
-text = "a walk
-through the woods
+text = "a walk through the woods
 at night"
 fit_content = true
 
@@ -154,7 +152,7 @@ offset_right = -30.0
 offset_bottom = -28.0
 theme_type_variation = &"SubtitleText"
 bbcode_enabled = true
-text = "by snakeoverhead"
+text = "a game by snakeoverhead"
 fit_content = true
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -213,17 +211,13 @@ mouse_default_cursor_shape = 2
 text = "settings
 "
 
-[node name="CreditsButton" type="Button" parent="ContentLayer/MainMenu/CenterContent/VBoxContainer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "credits"
-
 [node name="QuitButton" type="Button" parent="ContentLayer/MainMenu/CenterContent/VBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "quit"
 
 [node name="SettingsMenu" type="Control" parent="ContentLayer" node_paths=PackedStringArray("master_volume", "ambient_volume", "sfx_volume")]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -296,6 +290,7 @@ clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"SubtitleText"
+theme_override_font_sizes/normal_font_size = 22
 text = "ambient sound"
 fit_content = true
 scroll_active = false
@@ -318,6 +313,7 @@ clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"SubtitleText"
+theme_override_font_sizes/normal_font_size = 22
 text = "sfx"
 fit_content = true
 scroll_active = false

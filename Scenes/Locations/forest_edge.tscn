@@ -1,0 +1,173 @@
+[gd_scene load_steps=23 format=3 uid="uid://d2lxegt3s0k8k"]
+
+[ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="1_85hra"]
+[ext_resource type="Texture2D" uid="uid://ta0aexsimssg" path="res://Assets/patrick-rosenkranz-KConNJlDTv8-unsplash.jpg" id="2_85hra"]
+[ext_resource type="Script" uid="uid://cx4kuvxmc5hnr" path="res://Scripts/player_controller.gd" id="3_ddey5"]
+[ext_resource type="Shader" uid="uid://c2f2g6eb33vy3" path="res://Scripts/Shaders/spriteshader.gdshader" id="4_fs2oj"]
+[ext_resource type="Texture2D" uid="uid://dyrkn0hrsmjbt" path="res://Assets/Woodcutter_idle.png" id="4_pd646"]
+[ext_resource type="Texture2D" uid="uid://boh4cqujjcub1" path="res://Assets/Woodcutter_walk.png" id="6_ojcvs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddey5"]
+shader = ExtResource("1_85hra")
+shader_parameter/amount = 1085
+shader_parameter/threshold = 0.35
+shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/invert = true
+
+[sub_resource type="Gradient" id="Gradient_ojcvs"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qvc2d"]
+gradient = SubResource("Gradient_ojcvs")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pd646"]
+shader = ExtResource("4_fs2oj")
+shader_parameter/pixellation = 300
+shader_parameter/transparency_threshold = 0.4
+shader_parameter/color = Vector3(42, 42, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs2oj"]
+atlas = ExtResource("4_pd646")
+region = Rect2(0, 16, 27, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojcvs"]
+atlas = ExtResource("4_pd646")
+region = Rect2(48, 16, 27, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvc2d"]
+atlas = ExtResource("4_pd646")
+region = Rect2(96, 16, 27, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bslrf"]
+atlas = ExtResource("4_pd646")
+region = Rect2(144, 16, 27, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf81t"]
+atlas = ExtResource("6_ojcvs")
+region = Rect2(0, 14, 28, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1gru"]
+atlas = ExtResource("6_ojcvs")
+region = Rect2(48, 14, 28, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_651w7"]
+atlas = ExtResource("6_ojcvs")
+region = Rect2(96, 14, 28, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huqx6"]
+atlas = ExtResource("6_ojcvs")
+region = Rect2(144, 14, 28, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvpkk"]
+atlas = ExtResource("6_ojcvs")
+region = Rect2(192, 14, 28, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11fxb"]
+atlas = ExtResource("6_ojcvs")
+region = Rect2(240, 14, 28, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ddey5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs2oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojcvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvc2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bslrf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf81t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1gru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_651w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huqx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvpkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11fxb")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojcvs"]
+size = Vector2(235, 278.5)
+
+[node name="ForestEdge" type="Node2D"]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundLayer"]
+material = SubResource("ShaderMaterial_ddey5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -997.0
+offset_top = -1460.0
+offset_right = 1937.0
+offset_bottom = 1103.33
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_85hra")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -593.0
+offset_top = 6.0
+offset_right = -847.0
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_qvc2d")
+expand_mode = 1
+
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("pivot", "animated_sprite")]
+position = Vector2(462, 617)
+script = ExtResource("3_ddey5")
+pivot = NodePath("Pivot")
+animated_sprite = NodePath("Pivot/AnimatedSprite2D")
+
+[node name="Pivot" type="Node2D" parent="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/Pivot"]
+material = SubResource("ShaderMaterial_pd646")
+scale = Vector2(2.36111, 2.36111)
+sprite_frames = SubResource("SpriteFrames_ddey5")
+animation = &"idle"
+frame_progress = 0.375826
+
+[node name="ForestEntrance" type="Area2D" parent="."]
+position = Vector2(1187.5, 562.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForestEntrance"]
+shape = SubResource("RectangleShape2D_ojcvs")
+
+[node name="Exit" type="Area2D" parent="."]
+position = Vector2(-12, 562.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+shape = SubResource("RectangleShape2D_ojcvs")

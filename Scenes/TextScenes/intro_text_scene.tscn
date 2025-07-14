@@ -33,6 +33,7 @@ text_container = NodePath("ContentLayer/Control/Content/ScrollContainer/VTextCon
 next_scene = "entrance"
 scroll_container = NodePath("ContentLayer/Control/Content/ScrollContainer")
 indicator = NodePath("ContentLayer/Control/Content/NextIndicator")
+debug_force_allow_input = true
 
 [node name="ContentLayer" type="CanvasLayer" parent="."]
 

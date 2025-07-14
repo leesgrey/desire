@@ -25,7 +25,6 @@ func _ready():
 
 
 func _start_game():
-
 	main_menu.process_mode = Node.PROCESS_MODE_DISABLED
 	AudioManager.play_sound("crow", AudioManager.SoundType.SFX, 0., 3.)
 	Navigator.change_scene(next_scene, false, true, true)

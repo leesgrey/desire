@@ -9,30 +9,25 @@
 [sub_resource type="Resource" id="Resource_gk0bm"]
 script = ExtResource("2_ry2vw")
 text = "description of the corpse 1"
-line_id = ""
 metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
 
 [sub_resource type="Resource" id="Resource_8igxl"]
 script = ExtResource("2_ry2vw")
 text = "description of the corpse 2"
-line_id = ""
 metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
 
 [sub_resource type="Resource" id="Resource_6diy0"]
 script = ExtResource("3_6qd74")
 text = "leave"
-line_id = ""
 metadata/_custom_type_script = "uid://bxbg6v20dv75t"
 
 [sub_resource type="Resource" id="Resource_gunrv"]
 script = ExtResource("2_ry2vw")
 text = "you cleanse the rot."
-line_id = ""
 metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
 
 [sub_resource type="Resource" id="Resource_duy63"]
 script = ExtResource("4_tfucg")
-event_id = ""
 lines = Array[ExtResource("1_lius4")]([SubResource("Resource_gunrv")])
 metadata/_custom_type_script = "uid://bxuepomjovu8v"
 
@@ -40,7 +35,6 @@ metadata/_custom_type_script = "uid://bxuepomjovu8v"
 script = ExtResource("3_6qd74")
 text = "burn"
 next_event = SubResource("Resource_duy63")
-line_id = ""
 metadata/_custom_type_script = "uid://bxbg6v20dv75t"
 
 [sub_resource type="Resource" id="Resource_ps1ab"]
@@ -50,11 +44,9 @@ answers = Dictionary[String, ExtResource("3_6qd74")]({
 "": SubResource("Resource_6diy0"),
 "burn_corpse": SubResource("Resource_jhb6s")
 })
-line_id = ""
 metadata/_custom_type_script = "uid://c5m7333xsejoh"
 
 [resource]
 script = ExtResource("4_tfucg")
-event_id = ""
 lines = Array[ExtResource("1_lius4")]([SubResource("Resource_gk0bm"), SubResource("Resource_8igxl"), SubResource("Resource_ps1ab")])
 metadata/_custom_type_script = "uid://bxuepomjovu8v"

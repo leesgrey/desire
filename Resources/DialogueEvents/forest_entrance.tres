@@ -7,19 +7,16 @@
 [sub_resource type="Resource" id="Resource_wnrif"]
 script = ExtResource("2_rwxg4")
 text = "description of the forest ahead of you"
-line_id = ""
 metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
 
 [sub_resource type="Resource" id="Resource_gwg0e"]
 script = ExtResource("2_rwxg4")
 text = "the moon cuts ribbons of light and shadow through the rustling leaves."
-line_id = ""
 metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
 
 [sub_resource type="Resource" id="Resource_rwxg4"]
 script = ExtResource("2_rwxg4")
 text = "its strict providence guides your hand."
-line_id = ""
 metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
 
 [resource]

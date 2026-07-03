@@ -10,12 +10,10 @@
 [sub_resource type="Resource" id="Resource_16o7w"]
 script = ExtResource("3_16o7w")
 text = "you have work to do."
-line_id = ""
 metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
 
 [sub_resource type="Resource" id="Resource_b1nrs"]
 script = ExtResource("2_6yy3m")
-event_id = ""
 lines = Array[ExtResource("1_f6yv3")]([SubResource("Resource_16o7w")])
 metadata/_custom_type_script = "uid://bxuepomjovu8v"
 
@@ -23,19 +21,16 @@ metadata/_custom_type_script = "uid://bxuepomjovu8v"
 script = ExtResource("2_51kuk")
 text = "no, stay"
 next_event = SubResource("Resource_b1nrs")
-line_id = ""
 metadata/_custom_type_script = "uid://bxbg6v20dv75t"
 
 [sub_resource type="Resource" id="Resource_ora8k"]
 script = ExtResource("3_16o7w")
 text = "something moody about leaving"
-line_id = ""
 metadata/_custom_type_script = "uid://bf7ltv6p23i8l"
 
 [sub_resource type="Resource" id="Resource_rdjet"]
 script = ExtResource("4_16o7w")
 next_scene = "ending"
-event_id = ""
 lines = Array[ExtResource("1_f6yv3")]([SubResource("Resource_ora8k")])
 metadata/_custom_type_script = "uid://dfsdwlefk5xk1"
 
@@ -43,7 +38,6 @@ metadata/_custom_type_script = "uid://dfsdwlefk5xk1"
 script = ExtResource("2_51kuk")
 text = "yes, leave it be"
 next_event = SubResource("Resource_rdjet")
-line_id = ""
 metadata/_custom_type_script = "uid://bxbg6v20dv75t"
 
 [sub_resource type="Resource" id="Resource_51kuk"]

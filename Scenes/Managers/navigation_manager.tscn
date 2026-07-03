@@ -116,7 +116,7 @@ location_dict = Dictionary[String, PackedScene]({
 "clearing": ExtResource("2_b3sll"),
 "ending": ExtResource("3_xs4q2"),
 "enter": ExtResource("4_jrx0l"),
-"entrance": ExtResource("5_27v2j"),
+"forest_edge": ExtResource("5_27v2j"),
 "hut": ExtResource("8_6b51o"),
 "intro_text": ExtResource("9_g0muf"),
 "meadow": ExtResource("10_no5c1"),

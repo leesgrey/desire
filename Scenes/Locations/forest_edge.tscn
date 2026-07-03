@@ -1,24 +1,17 @@
-[gd_scene load_steps=23 format=3 uid="uid://d2lxegt3s0k8k"]
+[gd_scene load_steps=24 format=3 uid="uid://d2lxegt3s0k8k"]
 
-[ext_resource type="Shader" uid="uid://65grc6rp7bqn" path="res://Scripts/Shaders/pixellate.gdshader" id="1_85hra"]
-[ext_resource type="Texture2D" uid="uid://ta0aexsimssg" path="res://Assets/patrick-rosenkranz-KConNJlDTv8-unsplash.jpg" id="2_85hra"]
-[ext_resource type="Script" uid="uid://cx4kuvxmc5hnr" path="res://Scripts/player_controller.gd" id="3_ddey5"]
+[ext_resource type="Script" uid="uid://chf20p1on8k2j" path="res://Scripts/Scenes/forest_edge.gd" id="1_qvc2d"]
+[ext_resource type="Script" uid="uid://cpmfajdj2nq6e" path="res://Scripts/EntranceWalk/walk_trigger.gd" id="2_uf81t"]
+[ext_resource type="Script" uid="uid://cx4kuvxmc5hnr" path="res://Scripts/EntranceWalk/player_controller.gd" id="3_ddey5"]
+[ext_resource type="Theme" uid="uid://dd1c33ktwh6ap" path="res://main_theme.tres" id="4_bslrf"]
 [ext_resource type="Shader" uid="uid://c2f2g6eb33vy3" path="res://Scripts/Shaders/spriteshader.gdshader" id="4_fs2oj"]
 [ext_resource type="Texture2D" uid="uid://dyrkn0hrsmjbt" path="res://Assets/Woodcutter_idle.png" id="4_pd646"]
+[ext_resource type="Texture2D" uid="uid://by4teuqb7h8dh" path="res://Assets/Sprite-0001.png" id="4_uf81t"]
 [ext_resource type="Texture2D" uid="uid://boh4cqujjcub1" path="res://Assets/Woodcutter_walk.png" id="6_ojcvs"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddey5"]
-shader = ExtResource("1_85hra")
-shader_parameter/amount = 1085
-shader_parameter/threshold = 0.35
-shader_parameter/color = Vector3(42, 42, 50)
-shader_parameter/invert = true
-
-[sub_resource type="Gradient" id="Gradient_ojcvs"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qvc2d"]
-gradient = SubResource("Gradient_ojcvs")
+[sub_resource type="Resource" id="Resource_p1gru"]
+script = ExtResource("2_uf81t")
+metadata/_custom_type_script = "uid://cpmfajdj2nq6e"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pd646"]
 shader = ExtResource("4_fs2oj")
@@ -110,55 +103,65 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojcvs"]
-size = Vector2(235, 278.5)
+size = Vector2(204.5, 278.5)
 
-[node name="ForestEdge" type="Node2D"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bslrf"]
+b = Vector2(0, 100)
+
+[node name="ForestEdge" type="Node2D" node_paths=PackedStringArray("forest_entrance_collider", "moon")]
+script = ExtResource("1_qvc2d")
+forest_entrance_collider = NodePath("ForestEntrance")
+walk_triggers = Array[ExtResource("2_uf81t")]([SubResource("Resource_p1gru")])
+moon = NodePath("BackgroundLayer/Moon")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="TextureRect" type="TextureRect" parent="BackgroundLayer"]
-material = SubResource("ShaderMaterial_ddey5")
+[node name="TextureRect3" type="TextureRect" parent="BackgroundLayer"]
+modulate = Color(0.16470589, 0.16470589, 0.19607843, 1)
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -997.0
-offset_top = -1460.0
-offset_right = 1937.0
-offset_bottom = 1103.33
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_85hra")
-expand_mode = 5
-stretch_mode = 5
+texture = ExtResource("4_uf81t")
+expand_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="BackgroundLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -593.0
-offset_top = 6.0
-offset_right = -847.0
-offset_bottom = -111.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_qvc2d")
-expand_mode = 1
+[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundLayer"]
+offset_left = 161.0
+offset_top = 119.0
+offset_right = 285.0
+offset_bottom = 159.0
+theme = ExtResource("4_bslrf")
+theme_type_variation = &"EdgeNarration"
+text = "hello blue sky"
 
-[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("pivot", "animated_sprite")]
-position = Vector2(462, 617)
+[node name="Moon" type="ColorRect" parent="BackgroundLayer"]
+offset_left = 109.0
+offset_top = 68.0
+offset_right = 149.0
+offset_bottom = 108.0
+pivot_offset = Vector2(0, 20)
+
+[node name="Player" type="Node2D" parent="." node_paths=PackedStringArray("pivot", "animated_sprite", "visibility_notifier")]
+position = Vector2(51, 235)
 script = ExtResource("3_ddey5")
+WALK_SPEED = 15.0
 pivot = NodePath("Pivot")
 animated_sprite = NodePath("Pivot/AnimatedSprite2D")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
 
-[node name="Pivot" type="Node2D" parent="Node2D"]
+[node name="Pivot" type="Node2D" parent="Player"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/Pivot"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/Pivot"]
 material = SubResource("ShaderMaterial_pd646")
-scale = Vector2(2.36111, 2.36111)
+position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_ddey5")
 animation = &"idle"
 frame_progress = 0.375826
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Player"]
 
 [node name="ForestEntrance" type="Area2D" parent="."]
 position = Vector2(1187.5, 562.25)
@@ -166,8 +169,7 @@ position = Vector2(1187.5, 562.25)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForestEntrance"]
 shape = SubResource("RectangleShape2D_ojcvs")
 
-[node name="Exit" type="Area2D" parent="."]
-position = Vector2(-12, 562.25)
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-shape = SubResource("RectangleShape2D_ojcvs")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("SegmentShape2D_bslrf")

@@ -9,6 +9,8 @@ signal axe_taken
 @export var choices: Dictionary[String, bool]
 @export var seen_objects: Dictionary[String, bool]
 
+var previous_location := ""
+
 var signal_dict: Dictionary = {
 	"burn_writings": writings_burnt,
 	"burn_corpse": corpse_burnt,

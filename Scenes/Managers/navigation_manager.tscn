@@ -2,11 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dk0xpe10l2otu" path="res://Scripts/navigator.gd" id="1_ya5x6"]
 [ext_resource type="PackedScene" uid="uid://c4byfj8x7kau" path="res://Scenes/Locations/forest_clearing.tscn" id="2_b3sll"]
-[ext_resource type="PackedScene" uid="uid://dukqk0ky5ujg5" path="res://Scenes/TextScenes/ending.tscn" id="3_xs4q2"]
-[ext_resource type="PackedScene" uid="uid://brd7j4dofv54n" path="res://Scenes/TextScenes/temple_text_scene.tscn" id="4_jrx0l"]
 [ext_resource type="PackedScene" uid="uid://d2lxegt3s0k8k" path="res://Scenes/Locations/forest_edge.tscn" id="5_27v2j"]
 [ext_resource type="PackedScene" uid="uid://c70umeev7pl2m" path="res://Scenes/Locations/hut.tscn" id="8_6b51o"]
-[ext_resource type="PackedScene" uid="uid://bwnn28w316u2v" path="res://Scenes/TextScenes/intro_text_scene.tscn" id="9_g0muf"]
 [ext_resource type="PackedScene" uid="uid://bj61ss3cn1w6a" path="res://Scenes/Locations/meadow.tscn" id="10_no5c1"]
 [ext_resource type="PackedScene" uid="uid://ciqyo2kyj0dd0" path="res://Scenes/Locations/river.tscn" id="11_cgpt6"]
 [ext_resource type="PackedScene" uid="uid://o4r6yycft467" path="res://Scenes/Locations/temple.tscn" id="13_3d6rm"]
@@ -114,16 +111,12 @@ script = ExtResource("1_ya5x6")
 animation_player = NodePath("TransitionScreen/AnimationPlayer")
 location_dict = Dictionary[String, PackedScene]({
 "clearing": ExtResource("2_b3sll"),
-"ending": ExtResource("3_xs4q2"),
-"enter": ExtResource("4_jrx0l"),
 "forest_edge": ExtResource("5_27v2j"),
 "hut": ExtResource("8_6b51o"),
-"intro_text": ExtResource("9_g0muf"),
 "meadow": ExtResource("10_no5c1"),
 "river": ExtResource("11_cgpt6"),
 "temple": ExtResource("13_3d6rm")
 })
-ending_scene = ExtResource("3_xs4q2")
 main_menu = ExtResource("16_b6j8o")
 
 [node name="TransitionScreen" type="CanvasLayer" parent="."]

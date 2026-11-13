@@ -95,29 +95,28 @@ theme = ExtResource("5_kup7c")
 
 [node name="UpperLeft" type="Control" parent="ContentLayer/MainMenu"]
 layout_mode = 1
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 100.0
-offset_top = 100.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 50.0
 
 [node name="Vertical" type="Line2D" parent="ContentLayer/MainMenu/UpperLeft"]
-points = PackedVector2Array(20, 0, 20, 93)
+points = PackedVector2Array(20, 0, 20, 112.22)
 width = 1.0
+default_color = Color(0.58431375, 0.6117647, 0.7137255, 1)
 
 [node name="Horizontal" type="Line2D" parent="ContentLayer/MainMenu/UpperLeft"]
-position = Vector2(-0.193651, 3.67937)
+position = Vector2(7.806349, 3.67937)
 scale = Vector2(0.806349, 0.806349)
-points = PackedVector2Array(0, 20, 413.213, 20)
+points = PackedVector2Array(0, 20, 447.638, 20)
 width = 1.0
+default_color = Color(0.58431375, 0.6117647, 0.7137255, 1)
 
 [node name="FlavorText" type="RichTextLabel" parent="ContentLayer/MainMenu/UpperLeft"]
 layout_mode = 0
-offset_left = 29.0
-offset_top = 25.0
-offset_right = 511.0
-offset_bottom = 84.0
+offset_left = 36.0
+offset_top = 34.0
+offset_right = 518.0
+offset_bottom = 93.0
 theme_type_variation = &"SubtitleText"
 bbcode_enabled = true
 text = "a walk through the woods
@@ -131,28 +130,33 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -100.0
-offset_bottom = -100.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = -50.0
+offset_bottom = -50.0
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Vertical" type="Line2D" parent="ContentLayer/MainMenu/NameCorner"]
-points = PackedVector2Array(-20, 0, -20, -70)
+points = PackedVector2Array(-20, 0, -20, -122.62)
 width = 1.0
+default_color = Color(0.58431375, 0.6117647, 0.7137255, 1)
 
 [node name="Horizontal" type="Line2D" parent="ContentLayer/MainMenu/NameCorner"]
-points = PackedVector2Array(0, -20, -300, -20)
+points = PackedVector2Array(0, -20, -383.69, -20)
 width = 1.0
+default_color = Color(0.58431375, 0.6117647, 0.7137255, 1)
 
 [node name="LabelText" type="RichTextLabel" parent="ContentLayer/MainMenu/NameCorner"]
 layout_mode = 0
-offset_left = -462.0
-offset_top = -57.0
-offset_right = -30.0
-offset_bottom = -28.0
+offset_left = -471.0
+offset_top = -88.0
+offset_right = -39.0
+offset_bottom = -38.0
 theme_type_variation = &"SubtitleText"
 bbcode_enabled = true
-text = "a game by snakeoverhead"
+text = "a game by snakeoverhead
+inspired by godot wild jam #81"
 fit_content = true
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -182,12 +186,13 @@ offset_right = 225.0
 offset_bottom = 142.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 36
 
 [node name="Title" type="RichTextLabel" parent="ContentLayer/MainMenu/CenterContent/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_kup7c")
 theme_type_variation = &"HeaderLarge"
-text = "easement"
+text = "title title title"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
@@ -241,10 +246,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -301.5
-offset_top = -135.0
-offset_right = 301.5
-offset_bottom = 135.0
+offset_left = -261.75
+offset_top = -156.0
+offset_right = 261.75
+offset_bottom = 156.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -256,6 +261,10 @@ layout_mode = 2
 theme_type_variation = &"HeaderMedium"
 text = "settings"
 fit_content = true
+
+[node name="Control" type="Control" parent="ContentLayer/SettingsMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 13.61)
+layout_mode = 2
 
 [node name="SettingRow" type="HBoxContainer" parent="ContentLayer/SettingsMenu/VBoxContainer"]
 layout_mode = 2
@@ -269,12 +278,10 @@ text = "master volume"
 fit_content = true
 scroll_active = false
 
-[node name="Control2" type="Control" parent="ContentLayer/SettingsMenu/VBoxContainer/SettingRow"]
-layout_mode = 2
-
 [node name="HSlider" type="HSlider" parent="ContentLayer/SettingsMenu/VBoxContainer/SettingRow"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
 max_value = 1.0
 step = 0.001
 value = 1.0
@@ -298,6 +305,7 @@ scroll_active = false
 [node name="HSlider" type="HSlider" parent="ContentLayer/SettingsMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
 max_value = 1.0
 step = 0.001
 value = 1.0
@@ -321,21 +329,29 @@ scroll_active = false
 [node name="HSlider" type="HSlider" parent="ContentLayer/SettingsMenu/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
 max_value = 1.0
 step = 0.001
 value = 1.0
 
+[node name="Control2" type="Control" parent="ContentLayer/SettingsMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
 [node name="HBoxContainer4" type="HBoxContainer" parent="ContentLayer/SettingsMenu/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 94
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="ContentLayer/SettingsMenu/VBoxContainer/HBoxContainer4"]
 clip_contents = false
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.1
 theme_type_variation = &"SettingsMenuLabel"
 text = "audio captions"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 
 [node name="CheckButton" type="CheckButton" parent="ContentLayer/SettingsMenu/VBoxContainer/HBoxContainer4"]
 layout_mode = 2

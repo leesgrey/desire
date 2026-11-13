@@ -31,8 +31,8 @@ GameState="*res://Scripts/game_state.gd"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=274
+window/size/viewport_width=1280
+window/size/viewport_height=800
 window/stretch/mode="canvas_items"
 
 [gui]

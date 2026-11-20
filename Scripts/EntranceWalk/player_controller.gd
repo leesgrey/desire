@@ -11,14 +11,15 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2(WALK_SPEED * -delta, 0)
 		pivot.scale.x = -1
 		animated_sprite.play("walk")
+		SignalBus.player_walking_left.emit()
 	elif Input.is_action_pressed("move_right"):
 		velocity = Vector2(WALK_SPEED * delta, 0)
 		pivot.scale.x = 1
 		animated_sprite.play("walk")
+		SignalBus.player_walking_right.emit()
 	else:
 		velocity = Vector2.ZERO
 		animated_sprite.play("idle")
 	
 	move_and_slide()
-	
 	

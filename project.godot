@@ -28,6 +28,7 @@ ShaderLayer="res://Scenes/shader_layer.tscn"
 TooltipHandler="*res://Scenes/Managers/tooltip_manager.tscn"
 DialogueManager="*res://Scenes/Managers/dialogue_manager.tscn"
 GameState="*res://Scripts/game_state.gd"
+SignalBus="*res://Scripts/signal_bus.gd"
 
 [display]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d2lxegt3s0k8k"]
+[gd_scene load_steps=31 format=3 uid="uid://d2lxegt3s0k8k"]
 
 [ext_resource type="Script" uid="uid://chf20p1on8k2j" path="res://Scripts/Scenes/forest_edge.gd" id="1_qvc2d"]
 [ext_resource type="Script" uid="uid://cx4kuvxmc5hnr" path="res://Scripts/EntranceWalk/player_controller.gd" id="3_ddey5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dyrkn0hrsmjbt" path="res://Assets/Woodcutter_idle.png" id="4_pd646"]
 [ext_resource type="Script" uid="uid://cpmfajdj2nq6e" path="res://Scripts/EntranceWalk/text_trigger.gd" id="5_uf81t"]
 [ext_resource type="Texture2D" uid="uid://boh4cqujjcub1" path="res://Assets/Woodcutter_walk.png" id="6_ojcvs"]
+[ext_resource type="Script" uid="uid://6vftho6c4u73" path="res://Scripts/ghost.gd" id="6_p1gru"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_651w7"]
 shader = ExtResource("3_uf81t")
@@ -17,14 +18,40 @@ shader_parameter/threshold = 0.2
 shader_parameter/color = Vector3(42, 42, 50)
 shader_parameter/invert = true
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_p1gru"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uf81t"]
 size = Vector2(101, 108)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pd646"]
-shader = ExtResource("4_fs2oj")
+[sub_resource type="Shader" id="Shader_uf81t"]
+code = "shader_type canvas_item;
+
+uniform int pixellation = 40;
+uniform float transparency_threshold;
+uniform vec3 color;
+
+void fragment()
+{
+	vec2 grid_uv = round(UV * float(pixellation)) / float(pixellation);
+
+	vec4 text = texture(TEXTURE, grid_uv);
+
+	if (text.r + text.g + text.b < transparency_threshold)
+	{
+		COLOR = vec4(0., 0., 0., 0.);
+	}
+	else
+	{
+		COLOR = vec4(color.r / 255., color.g / 255., color.b / 255., 1.);
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1gru"]
+shader = SubResource("Shader_uf81t")
 shader_parameter/pixellation = 300
 shader_parameter/transparency_threshold = 0.4
-shader_parameter/color = Vector3(42, 42, 50)
+shader_parameter/color = Vector3(22, 22, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fs2oj"]
 atlas = ExtResource("4_pd646")
@@ -112,17 +139,29 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bslrf"]
 size = Vector2(20, 32)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pd646"]
+shader = ExtResource("4_fs2oj")
+shader_parameter/pixellation = 300
+shader_parameter/transparency_threshold = 0.4
+shader_parameter/color = Vector3(42, 42, 50)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojcvs"]
 size = Vector2(204.5, 278.5)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_bslrf"]
 b = Vector2(0, 100)
 
-[node name="ForestEdge" type="Node2D" node_paths=PackedStringArray("text_trigger_layers")]
+[node name="ForestEdge" type="Node2D" node_paths=PackedStringArray("text_trigger_layers", "narration", "instruction_soft", "instruction_hard", "ghost_trigger", "timer", "ghost")]
 script = ExtResource("1_qvc2d")
 text_trigger_layers = {
 "start": NodePath("TextTriggerLayers/StartScene")
 }
+narration = NodePath("BackgroundLayer/Narration")
+instruction_soft = NodePath("BackgroundLayer/Instruction")
+instruction_hard = NodePath("BackgroundLayer/Warning")
+ghost_trigger = NodePath("GhostTrigger")
+timer = NodePath("Timer")
+ghost = NodePath("Ghost")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -145,14 +184,50 @@ texture = ExtResource("4_p1gru")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundLayer"]
-offset_left = 161.0
-offset_top = 119.0
-offset_right = 285.0
-offset_bottom = 159.0
+[node name="Warning" type="RichTextLabel" parent="BackgroundLayer"]
+visible = false
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("4_bslrf")
 theme_type_variation = &"EdgeNarration"
-text = "hello blue sky"
+text = "WALK RIGHT"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Narration" type="RichTextLabel" parent="BackgroundLayer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_bslrf")
+theme_type_variation = &"EdgeNarration"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Instruction" type="RichTextLabel" parent="BackgroundLayer"]
+visible = false
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_bslrf")
+theme_type_variation = &"EdgeNarration"
+text = "press D to walk right"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Moon" type="ColorRect" parent="BackgroundLayer"]
 offset_left = 109.0
@@ -168,22 +243,87 @@ pivot_offset = Vector2(0, 20)
 position = Vector2(51, 704)
 
 [node name="Area2D" type="Area2D" parent="TextTriggerLayers/StartScene"]
-position = Vector2(82, 0)
+position = Vector2(381, -1)
 collision_layer = 0
 monitorable = false
 script = ExtResource("5_uf81t")
-text = "booo"
+text = "booo1"
 metadata/_custom_type_script = "uid://cpmfajdj2nq6e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextTriggerLayers/StartScene/Area2D"]
-position = Vector2(18, -15)
+shape = SubResource("SegmentShape2D_p1gru")
+
+[node name="Area2D2" type="Area2D" parent="TextTriggerLayers/StartScene"]
+position = Vector2(537, -1)
+collision_layer = 0
+monitorable = false
+script = ExtResource("5_uf81t")
+text = "booo2"
+metadata/_custom_type_script = "uid://cpmfajdj2nq6e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextTriggerLayers/StartScene/Area2D2"]
+shape = SubResource("SegmentShape2D_p1gru")
+
+[node name="Area2D3" type="Area2D" parent="TextTriggerLayers/StartScene"]
+position = Vector2(707, -1)
+collision_layer = 0
+monitorable = false
+script = ExtResource("5_uf81t")
+text = "booo3"
+metadata/_custom_type_script = "uid://cpmfajdj2nq6e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextTriggerLayers/StartScene/Area2D3"]
+shape = SubResource("SegmentShape2D_p1gru")
+
+[node name="Area2D4" type="Area2D" parent="TextTriggerLayers/StartScene"]
+position = Vector2(869, -1)
+collision_layer = 0
+monitorable = false
+script = ExtResource("5_uf81t")
+text = "booo4"
+metadata/_custom_type_script = "uid://cpmfajdj2nq6e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextTriggerLayers/StartScene/Area2D4"]
+shape = SubResource("SegmentShape2D_p1gru")
+
+[node name="GhostTrigger" type="Area2D" parent="."]
+position = Vector2(133, 704)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GhostTrigger"]
+position = Vector2(41, -14)
 shape = SubResource("RectangleShape2D_uf81t")
 
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+
+[node name="Ghost" type="CharacterBody2D" parent="." node_paths=PackedStringArray("animated_sprite")]
+position = Vector2(638, 445)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("6_p1gru")
+animated_sprite = NodePath("Pivot/AnimatedSprite2D")
+
+[node name="Pivot" type="Node2D" parent="Ghost"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ghost/Pivot"]
+material = SubResource("ShaderMaterial_p1gru")
+position = Vector2(1, 1)
+scale = Vector2(1.415, 1.415)
+sprite_frames = SubResource("SpriteFrames_ddey5")
+animation = &"idle"
+frame_progress = 0.375826
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ghost"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_bslrf")
+
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("pivot", "animated_sprite")]
-position = Vector2(51, 704)
+position = Vector2(397, 704)
 collision_mask = 0
 script = ExtResource("3_ddey5")
-WALK_SPEED = 800.0
+WALK_SPEED = 1200.0
 pivot = NodePath("Pivot")
 animated_sprite = NodePath("Pivot/AnimatedSprite2D")
 
